@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const socket = io();
-    let teamAScore = 0;
+    let teamAScore = 1;
     let teamBScore = 0;
     let activeTeam = 'A';
     let playerRole = null;
@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('startTimerButton').addEventListener('click', function () {
         if ((activeTeam === 'A' && playerRole === 'Team A Speaker') || 
             (activeTeam === 'B' && playerRole === 'Team B Speaker')) {
+            console.log("Starting Timer")
             socket.emit('startTimer', lobbyId, 60); // Start a 60-second timer
         }
     });
