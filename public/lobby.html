@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lobby</title>
+</head>
+<body>
+    <h1>Lobby</h1>
+    <div id="lobbyInfo"></div>
+    <button id="startGameButton">Start Game</button>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        const lobbyId = window.location.pathname.split('/').pop();
+        const lobbyInfo = document.getElementById('lobbyInfo');
+        const startGameButton = document.getElementById('startGameButton');
+
+        socket.emit('joinLobby', lobbyId);
+
+        socket.on('updateLobby', (lobby) => {
+            lobbyInfo.innerHTML = `Players in lobby: ${lobby.players.length}`;
+        });
+
+        startGameButton.addEventListener('click', () => {
+            socket.emit('startGame', lobbyId);
+        });
+
+        socket.on('startGame', () => {
+            // Redirect to the game page or start the game logic here
+            alert('Game started!');
+        });
+    </script>
+</body>
+</html>
