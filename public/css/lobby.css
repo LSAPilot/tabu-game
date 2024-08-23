@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+.teams {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-bottom: 20px;
+}
+.team {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    width: 45%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.team h2 {
+    margin-top: 0;
+}
+.role {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.role span {
+    font-size: 1.2em;
+}
+.role button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.role button:hover {
+    background-color: #0056b3;
+}
+#startGameButton {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+#startGameButton:hover {
+    background-color: #218838;
+}

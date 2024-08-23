@@ -20,6 +20,22 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
 });
 
+// Generate a unique lobby ID and redirect to the name page
+app.get('/create-lobby', (req, res) => {
+    const lobbyId = uuidv4();
+    res.redirect(`/name?lobbyId=${lobbyId}`);
+});
+
+// Handle name selection page
+app.get('/name', (req, res) => {
+    res.sendFile(__dirname + '/public/name.html');
+});
+
+// Handle lobby page
+app.get('/lobby/:id', (req, res) => {
+    res.sendFile(__dirname + '/public/lobby.html');
+});
+
 // Lobby system
 let lobbies = {};
 
@@ -27,21 +43,35 @@ io.on('connection', (socket) => {
     console.log('A user connected:', socket.id);
 
     // Create or join a lobby
-    socket.on('joinLobby', (lobbyId) => {
+    socket.on('joinLobby', ({ lobbyId, playerName }) => {
         if (!lobbies[lobbyId]) {
             lobbies[lobbyId] = { players: [] };
         }
+
+        const player = { id: socket.id, name: playerName, role: null };
+        lobbies[lobbyId].players.push(player);
+
         socket.join(lobbyId);
-        lobbies[lobbyId].players.push(socket.id);
         io.to(lobbyId).emit('updateLobby', lobbies[lobbyId]);
-        console.log(`User ${socket.id} joined lobby ${lobbyId}`);
+        console.log(`${playerName} joined lobby ${lobbyId}`);
+    });
+
+    // Handle role selection
+    socket.on('selectRole', ({ lobbyId, playerName, team, role }) => {
+        const lobby = lobbies[lobbyId];
+        const player = lobby.players.find(p => p.id === socket.id);
+        if (player) {
+            player.role = `${team} ${role}`;
+            io.to(lobbyId).emit('updateLobby', lobby);
+            console.log(`${playerName} selected role ${team} ${role}`);
+        }
     });
 
     // Handle disconnection
     socket.on('disconnect', () => {
         console.log('User disconnected:', socket.id);
         for (const [lobbyId, lobby] of Object.entries(lobbies)) {
-            const index = lobby.players.indexOf(socket.id);
+            const index = lobby.players.findIndex(player => player.id === socket.id);
             if (index !== -1) {
                 lobby.players.splice(index, 1);
                 io.to(lobbyId).emit('updateLobby', lobby);
@@ -66,17 +96,6 @@ io.on('connection', (socket) => {
     socket.on('confirmWord', (lobbyId) => {
         io.to(lobbyId).emit('confirmWord');
     });
-});
-
-// Generate a unique lobby ID
-app.get('/create-lobby', (req, res) => {
-    const lobbyId = uuidv4();
-    res.redirect(`/lobby/${lobbyId}`);
-});
-
-// Handle lobby page
-app.get('/lobby/:id', (req, res) => {
-    res.sendFile(__dirname + '/public/lobby.html');
 });
 
 // Start the server

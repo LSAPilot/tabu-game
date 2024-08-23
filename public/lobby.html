@@ -3,34 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lobby</title>
-    <script src="/socket.io/socket.io.js"></script>
+    <title>Taboo Game Lobby</title>
+    <link rel="stylesheet" href="/css/lobby.css">
 </head>
 <body>
-    <h1>Lobby</h1>
-    <div id="lobbyInfo"></div>
+    <h1>Join the Game Lobby</h1>
+    <div class="teams">
+        <div class="team">
+            <h2>Team A</h2>
+            <div class="role">
+                <span>Speaker:</span>
+                <button onclick="selectRole('Team A', 'Speaker')">Choose</button>
+            </div>
+            <div class="role">
+                <span>Guesser:</span>
+                <button onclick="selectRole('Team A', 'Guesser')">Choose</button>
+            </div>
+        </div>
+        <div class="team">
+            <h2>Team B</h2>
+            <div class="role">
+                <span>Speaker:</span>
+                <button onclick="selectRole('Team B', 'Speaker')">Choose</button>
+            </div>
+            <div class="role">
+                <span>Guesser:</span>
+                <button onclick="selectRole('Team B', 'Guesser')">Choose</button>
+            </div>
+        </div>
+    </div>
     <button id="startGameButton">Start Game</button>
 
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/lobby.js"></script>
     <script>
-        const socket = io();
-        const lobbyId = window.location.pathname.split('/').pop();
-        const lobbyInfo = document.getElementById('lobbyInfo');
-        const startGameButton = document.getElementById('startGameButton');
-
-        socket.emit('joinLobby', lobbyId);
-
-        socket.on('updateLobby', (lobby) => {
-            lobbyInfo.innerHTML = `Players in lobby: ${lobby.players.length}`;
-        });
-
-        startGameButton.addEventListener('click', () => {
-            socket.emit('startGame', lobbyId);
-        });
-
-        socket.on('startGame', () => {
-            // Redirect to the game page or start the game logic here
-            alert('Game started!');
-        });
+        function selectRole(team, role) {
+            // Here, you would emit a socket event to assign the role
+            // Example: socket.emit('selectRole', { team: team, role: role });
+            alert(`You selected ${role} for ${team}`);
+        }
     </script>
 </body>
 </html>
