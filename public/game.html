@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Who Said It?</title>
     <link rel="stylesheet" href="/css/game.css">
+    <script src="/turns.js"></script>
 </head>
 <body>
     <header>
@@ -12,6 +13,20 @@
     </header>
     
     <div class="game-container">
+
+        <div class="card">
+            <div class="scoreboard">
+                <div class="team-score" id="teamA">
+                    <h2>Team A</h2>
+                    <p id="teamAScore">0</p>
+                </div>
+                <div class="team-score" id="teamB">
+                    <h2>Team B</h2>
+                    <p id="teamBScore">0</p>
+                </div>
+            </div>
+        </div>
+
         <div class="card">
             <div class="word-to-guess">
                 <h2>Word to Guess</h2>
@@ -33,6 +48,6 @@
     </div>
 
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/game.js"></script>
+    <script src="/wordRendering.js"></script>
 </body>
 </html>

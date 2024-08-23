@@ -31,6 +31,7 @@ h1 {
     align-items: center;
     width: 100%;
     height: 100%;
+    flex-direction: column;
 }
 
 .card {
@@ -40,6 +41,7 @@ h1 {
     padding: 20px;
     width: 320px;
     text-align: center;
+    margin-top: 10px;
 }
 
 .scoreboard {
@@ -150,4 +152,24 @@ button:hover {
 
 button:active {
     background-color: #003f7f;
+}
+
+.active-team {
+    color: #007bff; /* Highlight active team in blue */
+}
+
+.inactive-team {
+    color: #ccc; /* Dim the inactive team */
+}
+
+.active-button {
+    background-color: #28a745; /* Green for active button */
+    color: white;
+    cursor: pointer;
+}
+
+.inactive-button {
+    background-color: #ccc; /* Greyed out for inactive button */
+    color: white;
+    cursor: not-allowed;
 }

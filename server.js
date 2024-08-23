@@ -18,17 +18,39 @@ app.use(express.static('public'));
 // Lobby system
 let lobbies = {};
 
+function startTimer(socket, lobbyId, duration) {
+    let timeLeft = duration;
+
+    const timerInterval = setInterval(() => {
+        timeLeft--;
+
+        // Emit the time left to all players in the lobby
+        io.to(lobbyId).emit('timerUpdate', timeLeft);
+
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            io.to(lobbyId).emit('timerEnd');
+        }
+    }, 1000);
+}
+
 io.on('connection', (socket) => {
     console.log('A user connected:', socket.id);
 
-    // Create or join a lobby
     socket.on('joinLobby', ({ lobbyId, playerName }) => {
         if (!lobbies[lobbyId]) {
             lobbies[lobbyId] = { players: [] };
         }
 
-        const player = { id: socket.id, name: playerName, role: null };
-        lobbies[lobbyId].players.push(player);
+        // Find the player by name, not socket ID
+        let player = lobbies[lobbyId].players.find(p => p.name === playerName);
+
+        if (player) {
+            player.id = socket.id; // Update socket ID for reconnects
+        } else {
+            player = { id: socket.id, name: playerName, role: null };
+            lobbies[lobbyId].players.push(player);
+        }
 
         socket.join(lobbyId);
         io.to(lobbyId).emit('updateLobby', lobbies[lobbyId]);
@@ -47,6 +69,7 @@ io.on('connection', (socket) => {
             if (!roleTaken) {
                 player.role = roleName;
                 io.to(lobbyId).emit('roleSelected', { team, role, name: playerName });
+                socket.emit('roleAssigned', { role: roleName });
                 console.log(`${playerName} selected role ${team} ${role}`);
             } else {
                 socket.emit('roleTaken', { team, role });
@@ -68,6 +91,11 @@ io.on('connection', (socket) => {
                 socket.emit('roleAssignmentIncomplete');
             }
         }
+    });
+
+    socket.on('startTimer', (lobbyId, duration) => {
+        console.log(`Timer started for lobby ${lobbyId} with duration ${duration} seconds`);
+        startTimer(socket, lobbyId, duration);
     });
 
     // Handle disconnection
