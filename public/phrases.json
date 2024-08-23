@@ -1,0 +1,463 @@
+{
+    "Begriffe": [
+      {
+        "Begriff": "Auto",
+        "Tabu-Wörter": ["Fahren", "Lenkrad", "Reifen", "Motor", "Verkehr"]
+      },
+      {
+        "Begriff": "Kaffee",
+        "Tabu-Wörter": ["Tasse", "Bohne", "Koffein", "Heiß", "Espresso"]
+      },
+      {
+        "Begriff": "Blume",
+        "Tabu-Wörter": ["Blüte", "Vase", "Rose", "Garten", "Duft"]
+      },
+      {
+        "Begriff": "Supermarkt",
+        "Tabu-Wörter": ["Einkaufen", "Regal", "Kasse", "Lebensmittel", "Wagen"]
+      },
+      {
+        "Begriff": "Fahrrad",
+        "Tabu-Wörter": ["Pedal", "Lenker", "Kette", "Rad", "Helm"]
+      },
+      {
+        "Begriff": "Zug",
+        "Tabu-Wörter": ["Schiene", "Bahnhof", "Lokomotive", "Bahn", "Ticket"]
+      },
+      {
+        "Begriff": "Egoist",
+        "Tabu-Wörter": ["Ich", "Selbst", "Narzisst", "Interesse", "Geben"]
+      },
+      {
+        "Begriff": "Regen",
+        "Tabu-Wörter": ["Wasser", "Tropfen", "Schirm", "Nass", "Wetter"]
+      },
+      {
+        "Begriff": "Handy",
+        "Tabu-Wörter": ["Telefon", "Smartphone", "Anruf", "App", "Display"]
+      },
+      {
+        "Begriff": "Pizza",
+        "Tabu-Wörter": ["Ofen", "Käse", "Tomate", "Teig", "Italien"]
+      },
+      {
+        "Begriff": "Arzt",
+        "Tabu-Wörter": ["Medizin", "Krankenhaus", "Behandlung", "Patient", "Stethoskop"]
+      },
+      {
+        "Begriff": "Eis",
+        "Tabu-Wörter": ["Kalt", "Sommer", "Schmelzen", "Vanille", "Kugel"]
+      },
+      {
+        "Begriff": "Computer",
+        "Tabu-Wörter": ["Bildschirm", "Tastatur", "Maus", "Internet", "Laptop"]
+      },
+      {
+        "Begriff": "Meer",
+        "Tabu-Wörter": ["Wasser", "Strand", "Wellen", "Salz", "Ozean"]
+      },
+      {
+        "Begriff": "Tiefgefroren",
+        "Tabu-Wörter": ["Eis", "Kalt", "Gefrierschrank", "Einfrieren", "Frost"]
+      },
+      {
+        "Begriff": "Koffer",
+        "Tabu-Wörter": ["Reisen", "Gepäck", "Flughafen", "Packen", "Rollen"]
+      },
+      {
+        "Begriff": "Musik",
+        "Tabu-Wörter": ["Lied", "Instrument", "Klang", "Noten", "Radio"]
+      },
+      {
+        "Begriff": "Kerze",
+        "Tabu-Wörter": ["Licht", "Flamme", "Wachs", "Docht", "Romantik"]
+      },
+      {
+        "Begriff": "Brot",
+        "Tabu-Wörter": ["Backen", "Mehl", "Bäcker", "Laib", "Schneiden"]
+      },
+      {
+        "Begriff": "Kamera",
+        "Tabu-Wörter": ["Foto", "Objektiv", "Blitz", "Aufnahme", "Bild"]
+      },
+      {
+        "Begriff": "Buch",
+        "Tabu-Wörter": ["Lesen", "Seite", "Autor", "Geschichte", "Kapitel"]
+      },
+      {
+        "Begriff": "Schule",
+        "Tabu-Wörter": ["Lehrer", "Klassenzimmer", "Lernen", "Schüler", "Tafel"]
+      },
+      {
+        "Begriff": "Schnee",
+        "Tabu-Wörter": ["Weiß", "Winter", "Kalt", "Flocken", "Skifahren"]
+      },
+      {
+        "Begriff": "Gitarre",
+        "Tabu-Wörter": ["Saiten", "Musik", "Instrument", "Akkord", "Spielen"]
+      },
+      {
+        "Begriff": "Müll",
+        "Tabu-Wörter": ["Abfall", "Tonne", "Recycling", "Wegwerfen", "Entsorgung"]
+      },
+      {
+        "Begriff": "Schokolade",
+        "Tabu-Wörter": ["Süß", "Kakao", "Tafel", "Milch", "Naschen"]
+      },
+      {
+        "Begriff": "Stadt",
+        "Tabu-Wörter": ["Gebäude", "Menschen", "Verkehr", "Metropole", "Platz"]
+      },
+      {
+        "Begriff": "Flugzeug",
+        "Tabu-Wörter": ["Fliegen", "Pilot", "Passagiere", "Start", "Landen"]
+      },
+      {
+        "Begriff": "Kochen",
+        "Tabu-Wörter": ["Essen", "Herd", "Rezept", "Topf", "Küche"]
+      },
+      {
+        "Begriff": "Lampe",
+        "Tabu-Wörter": ["Licht", "Birne", "Schalter", "Leuchte", "Dunkel"]
+      },
+      {
+        "Begriff": "Brille",
+        "Tabu-Wörter": ["Sehen", "Gläser", "Gestell", "Augen", "Kontaktlinsen"]
+      },
+      {
+        "Begriff": "Hund",
+        "Tabu-Wörter": ["Bellen", "Tier", "Haustier", "Leine", "Gassi"]
+      },
+      {
+        "Begriff": "Schlüssel",
+        "Tabu-Wörter": ["Tür", "Schloss", "Auto", "Öffnen", "Schlüsselbund"]
+      },
+      {
+        "Begriff": "Wüste",
+        "Tabu-Wörter": ["Sand", "Trocken", "Kaktus", "Düne", "Oase"]
+      },
+      {
+        "Begriff": "Tisch",
+        "Tabu-Wörter": ["Möbel", "Stuhl", "Holz", "Essen", "Platte"]
+      },
+      {
+        "Begriff": "Feuer",
+        "Tabu-Wörter": ["Brand", "Hitze", "Flamme", "Löschen", "Rauch"]
+      },
+      {
+        "Begriff": "Geld",
+        "Tabu-Wörter": ["Euro", "Scheine", "Münzen", "Bank", "Währung"]
+      },
+      {
+        "Begriff": "Sport",
+        "Tabu-Wörter": ["Bewegung", "Fitness", "Training", "Spiel", "Wettkampf"]
+      },
+      {
+        "Begriff": "Herbst",
+        "Tabu-Wörter": ["Blätter", "Jahreszeit", "Wind", "Bunt", "Oktober"]
+      },
+      {
+        "Begriff": "Brücke",
+        "Tabu-Wörter": ["Fluss", "Straße", "Verbindung", "Überqueren", "Bauwerk"]
+      },
+      {
+        "Begriff": "Kino",
+        "Tabu-Wörter": ["Film", "Leinwand", "Popcorn", "Tickets", "Sitzplätze"]
+      },
+      {
+        "Begriff": "Salz",
+        "Tabu-Wörter": ["Würzen", "Meer", "Weiß", "Pfeffer", "Koch"]
+      },
+      {
+        "Begriff": "Gemüse",
+        "Tabu-Wörter": ["Obst", "Gesund", "Ernte", "Salat", "Karotte"]
+      },
+      {
+        "Begriff": "Himmel",
+        "Tabu-Wörter": ["Blau", "Wolken", "Oben", "Fliegen", "Sonne"]
+      },
+      {
+        "Begriff": "Angst",
+        "Tabu-Wörter": ["Furcht", "Gefühl", "Schrecken", "Panik", "Mut"]
+      },
+      {
+        "Begriff": "Fernseher",
+        "Tabu-Wörter": ["Bildschirm", "Kanal", "Programm", "Film", "Serien"]
+      },
+      {
+        "Begriff": "Krankenhaus",
+        "Tabu-Wörter": ["Arzt", "Patient", "Pflege", "Operation", "Notfall"]
+      },
+      {
+        "Begriff": "Straße",
+        "Tabu-Wörter": ["Fahrbahn", "Autos", "Verkehr", "Ampel", "Kreuzung"]
+      },
+      {
+        "Begriff": "Berg",
+        "Tabu-Wörter": ["Gipfel", "Hoch", "Wandern", "Stein", "Alpen"]
+      },{
+        "Begriff": "Locker",
+        "Tabu-Wörter": ["entspannt", "leicht", "lässig", "relaxed", "lose"]
+      },
+      {
+        "Begriff": "Medizin",
+        "Tabu-Wörter": ["Arzt", "Heilung", "Krankheit", "Medikament", "Therapie"]
+      },
+      {
+        "Begriff": "Egoist",
+        "Tabu-Wörter": ["selbstsüchtig", "Ich", "egoistisch", "allein", "Narzissten"]
+      },
+      {
+        "Begriff": "Fernsehkoch",
+        "Tabu-Wörter": ["TV", "Küche", "Rezept", "Gastronomie", "kochen"]
+      },
+      {
+        "Begriff": "Hornhaut",
+        "Tabu-Wörter": ["Fuß", "dick", "Haut", "Verhärtung", "Schwielen"]
+      },
+      {
+        "Begriff": "Supermarkt",
+        "Tabu-Wörter": ["Einkauf", "Lebensmittel", "Kasse", "Regale", "Kunden"]
+      },
+      {
+        "Begriff": "Nanotechnologie",
+        "Tabu-Wörter": ["winzig", "Mikroskop", "Moleküle", "Wissenschaft", "Innovation"]
+      },
+      {
+        "Begriff": "nass",
+        "Tabu-Wörter": ["feucht", "Wasser", "regen", "trocken", "Durchnässt"]
+      },
+      {
+        "Begriff": "tiefgefroren",
+        "Tabu-Wörter": ["Kälte", "Eis", "Frost", "Essen", "Gefrierschrank"]
+      },
+      {
+        "Begriff": "Verhandlung",
+        "Tabu-Wörter": ["Diskussion", "Gespräch", "Abkommen", "Streit", "Kompromiss"]
+      },
+      {
+        "Begriff": "Astronaut",
+        "Tabu-Wörter": ["Weltraum", "Rakete", "NASA", "Planeten", "Schwerelosigkeit"]
+      },
+      {
+        "Begriff": "Psychologie",
+        "Tabu-Wörter": ["Verstand", "Therapie", "Verhalten", "Seele", "Geist"]
+      },
+      {
+        "Begriff": "Klischee",
+        "Tabu-Wörter": ["Vorurteil", "stereotyp", "allgemein", "Schublade", "gängig"]
+      },
+      {
+        "Begriff": "Algorithmus",
+        "Tabu-Wörter": ["Computer", "Muster", "Berechnung", "Formel", "Lösung"]
+      },
+      {
+        "Begriff": "Symptom",
+        "Tabu-Wörter": ["Krankheit", "Anzeichen", "Diagnose", "Beschwerden", "Gesundheit"]
+      },
+      {
+        "Begriff": "Hologramm",
+        "Tabu-Wörter": ["3D", "Projektion", "Bild", "Licht", "Technologie"]
+      },
+      {
+        "Begriff": "Meditation",
+        "Tabu-Wörter": ["Ruhe", "Geist", "Entspannung", "Atmen", "Yoga"]
+      },
+      {
+        "Begriff": "Photon",
+        "Tabu-Wörter": ["Licht", "Teilchen", "Energie", "Quanten", "Physik"]
+      },
+      {
+        "Begriff": "Kollaps",
+        "Tabu-Wörter": ["Zusammenbruch", "Fall", "Krise", "Ende", "Scheitern"]
+      },
+      {
+        "Begriff": "Kryptowährung",
+        "Tabu-Wörter": ["Bitcoin", "digital", "Geld", "Blockchain", "Wert"]
+      },
+      {
+        "Begriff": "Kontroverse",
+        "Tabu-Wörter": ["Debatte", "Thema", "Streit", "Meinung", "Öffentlichkeit"]
+      },
+      {
+        "Begriff": "Globalisierung",
+        "Tabu-Wörter": ["Welt", "Wirtschaft", "Handel", "international", "Verbindung"]
+      },
+      {
+        "Begriff": "Ergonomie",
+        "Tabu-Wörter": ["Arbeitsplatz", "Komfort", "Design", "gesund", "Sitz"]
+      },
+      {
+        "Begriff": "Quarantäne",
+        "Tabu-Wörter": ["Isolation", "Virus", "Einsperren", "Krankheit", "Abstand"]
+      },
+      {
+        "Begriff": "Philosophie",
+        "Tabu-Wörter": ["Denken", "Weisheit", "Logik", "Ideen", "Theorie"]
+      },
+      {
+        "Begriff": "Innovation",
+        "Tabu-Wörter": ["neu", "Technologie", "Erfindung", "Fortschritt", "Entwicklung"]
+      },
+      {
+        "Begriff": "Robotik",
+        "Tabu-Wörter": ["Maschine", "Automatisierung", "KI", "Technologie", "Mechanik"]
+      },
+      {
+        "Begriff": "Cyberangriff",
+        "Tabu-Wörter": ["Hacker", "Internet", "Daten", "Sicherheit", "Schutz"]
+      },
+      {
+        "Begriff": "Schlaganfall",
+        "Tabu-Wörter": ["Gehirn", "Blut", "Notfall", "Krankheit", "Lähmung"]
+      },
+      {
+        "Begriff": "Biodiversität",
+        "Tabu-Wörter": ["Natur", "Arten", "Ökosystem", "Erde", "Leben"]
+      },
+      {
+        "Begriff": "Telepathie",
+        "Tabu-Wörter": ["Gedanken", "Kommunikation", "übernatürlich", "Lesen", "Geist"]
+      },
+      {
+        "Begriff": "Revolution",
+        "Tabu-Wörter": ["Aufstand", "Veränderung", "Politik", "Gesellschaft", "Krieg"]
+      },
+      {
+        "Begriff": "Mythologie",
+        "Tabu-Wörter": ["Götter", "Legenden", "Erzählung", "Griechenland", "Sagen"]
+      },
+      {
+        "Begriff": "Infrastruktur",
+        "Tabu-Wörter": ["Straßen", "Brücken", "Bau", "Stadt", "Verkehr"]
+      },
+      {
+        "Begriff": "Klimawandel",
+        "Tabu-Wörter": ["Erde", "Temperatur", "Umwelt", "Wetter", "CO2"]
+      },
+      {
+        "Begriff": "Dekadenz",
+        "Tabu-Wörter": ["Luxus", "Verfall", "Üppigkeit", "Reichtum", "Überfluss"]
+      },
+      {
+        "Begriff": "Urbanisierung",
+        "Tabu-Wörter": ["Stadt", "Land", "Wachstum", "Bevölkerung", "Entwicklung"]
+      },
+      {
+        "Begriff": "Autonomie",
+        "Tabu-Wörter": ["Freiheit", "selbstständig", "unabhängig", "Entscheidung", "Kontrolle"]
+      },
+      {
+        "Begriff": "Minimalismus",
+        "Tabu-Wörter": ["Einfachheit", "weniger", "klar", "Ordnung", "Design"]
+      },
+      {
+        "Begriff": "Regenwald",
+        "Tabu-Wörter": ["Bäume", "Tropen", "Amazonas", "Natur", "Artenvielfalt"]
+      },
+      {
+        "Begriff": "Quantenphysik",
+        "Tabu-Wörter": ["Teilchen", "Wellen", "Licht", "Energie", "Mechanik"]
+      },
+      {
+        "Begriff": "Demokratie",
+        "Tabu-Wörter": ["Politik", "Staat", "Wahlen", "Volk", "Regierung"]
+      },
+      {
+        "Begriff": "Pandemie",
+        "Tabu-Wörter": ["Virus", "Welt", "Krankheit", "Ausbreitung", "Infektion"]
+      },
+      {
+        "Begriff": "Spiritualität",
+        "Tabu-Wörter": ["Glaube", "Religion", "Seele", "Inneres", "Meditation"]
+      },
+      {
+        "Begriff": "Holografie",
+        "Tabu-Wörter": ["3D", "Projektion", "Bild", "Technik", "Laser"]
+      },
+      {
+        "Begriff": "Dystopie",
+        "Tabu-Wörter": ["Zukunft", "negativ", "Gesellschaft", "Fiktion", "Unterdrückung"]
+      },
+      {
+        "Begriff": "Identität",
+        "Tabu-Wörter": ["Selbst", "Persönlichkeit", "Individuum", "Charakter", "Eigenschaften"]
+      },
+      {
+        "Begriff": "Algorithmus",
+        "Tabu-Wörter": ["Mathematik", "Code", "Computer", "Lösung", "Regel"]
+      },
+      {
+        "Begriff": "Symmetrie",
+        "Tabu-Wörter": ["gleich", "Spiegelbild", "Proportion", "Ordnung", "Balance"]
+      },
+      {
+        "Begriff": "Vulkan",
+        "Tabu-Wörter": ["Lava", "Ausbruch", "Berge", "Magma", "Erdbeben"]
+    },
+    {
+        "Begriff": "Ökologie",
+        "Tabu-Wörter": ["Umwelt", "Natur", "Organismen", "Interaktionen", "Ökosystem"]
+    },
+    {
+        "Begriff": "Astronomie",
+        "Tabu-Wörter": ["Planeten", "Sterne", "Universum", "Teleskop", "Raum"]
+    },
+    {
+        "Begriff": "Botanik",
+        "Tabu-Wörter": ["Pflanzen", "Biologie", "Blumen", "Wissenschaft", "Natur"]
+    },
+    {
+        "Begriff": "Genetik",
+        "Tabu-Wörter": ["DNA", "Vererbung", "Gene", "Chromosomen", "Erbgut"]
+    },
+    {
+        "Begriff": "Immunologie",
+        "Tabu-Wörter": ["Immunsystem", "Krankheit", "Antikörper", "Virus", "Schutz"]
+    },
+    {
+        "Begriff": "Philosophie",
+        "Tabu-Wörter": ["Denken", "Ethik", "Wissen", "Weisheit", "Theorie"]
+    },
+    {
+        "Begriff": "Neurologie",
+        "Tabu-Wörter": ["Gehirn", "Nerven", "Medizin", "Neurologe", "Synapsen"]
+    },
+    {
+        "Begriff": "Biomechanik",
+        "Tabu-Wörter": ["Bewegung", "Körper", "Muskeln", "Technik", "Wissenschaft"]
+    },
+    {
+        "Begriff": "Kybernetik",
+        "Tabu-Wörter": ["Systeme", "Regelung", "Steuerung", "Technologie", "Computer"]
+    },
+    {
+        "Begriff": "Quantenmechanik",
+        "Tabu-Wörter": ["Physik", "Teilchen", "Wellen", "Energie", "Mathematik"]
+    },
+    {
+        "Begriff": "Semantik",
+        "Tabu-Wörter": ["Bedeutung", "Sprache", "Wörter", "Interpretation", "Verstehen"]
+    },
+    {
+        "Begriff": "Ökonometrie",
+        "Tabu-Wörter": ["Wirtschaft", "Statistik", "Analyse", "Modelle", "Daten"]
+    },
+    {
+        "Begriff": "Geopolitik",
+        "Tabu-Wörter": ["Länder", "Macht", "Konflikt", "Politik", "Welt"]
+    },
+    {
+        "Begriff": "Biotechnologie",
+        "Tabu-Wörter": ["Genetik", "Wissenschaft", "Labor", "Innovation", "Biologie"]
+    },
+    {
+        "Begriff": "Radiologie",
+        "Tabu-Wörter": ["Medizin", "Röntgen", "Strahlen", "Diagnose", "Krankheiten"]
+    },
+    {
+        "Begriff": "Hydrologie",
+        "Tabu-Wörter": ["Wasser", "Kreislauf", "Flüsse", "Ozeane", "Niederschlag"]
+    }
+    ]
+}

@@ -13,22 +13,17 @@
     
     <div class="game-container">
         <div class="card">
+            <div class="word-to-guess">
+                <h2>Word to Guess</h2>
+                <p id="word"></p>
+            </div>
             <div class="timer">
                 <span id="timer">60</span>
             </div>
-            <div class="word-to-guess">
-                <h2>Word to Guess</h2>
-                <p id="word">Placeholder Word</p>
-            </div>
+            <button id="startTimerButton">Start Timer</button>
             <div class="forbidden-words">
                 <h3>Forbidden Words</h3>
-                <ul id="forbidden-list">
-                    <li>Word 1</li>
-                    <li>Word 2</li>
-                    <li>Word 3</li>
-                    <li>Word 4</li>
-                    <li>Word 5</li>
-                </ul>
+                <ul id="forbidden-list"></ul>
             </div>
             <div class="buttons">
                 <button id="confirmButton">Confirm</button>
