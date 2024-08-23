@@ -54,6 +54,22 @@ io.on('connection', (socket) => {
         }
     });
 
+    // Handle start game event
+    socket.on('startGame', (lobbyId) => {
+        const lobby = lobbies[lobbyId];
+
+        if (lobby) {
+            // Ensure that all players have selected roles
+            const allRolesAssigned = lobby.players.every(player => player.role !== null);
+            if (allRolesAssigned) {
+                io.to(lobbyId).emit('gameStarted');
+                console.log(`Game started in lobby ${lobbyId}`);
+            } else {
+                socket.emit('roleAssignmentIncomplete');
+            }
+        }
+    });
+
     // Handle disconnection
     socket.on('disconnect', () => {
         console.log('User disconnected:', socket.id);
@@ -68,11 +84,6 @@ io.on('connection', (socket) => {
                 break;
             }
         }
-    });
-
-    // Start game event
-    socket.on('startGame', (lobbyId) => {
-        io.to(lobbyId).emit('startGame');
     });
 
     // Handle gameplay events (buzz, confirm, etc.)
@@ -99,6 +110,11 @@ app.get('/name', (req, res) => {
 // Handle lobby page
 app.get('/lobby/:id', (req, res) => {
     res.sendFile(__dirname + '/public/lobby.html');
+});
+
+// Handle game page
+app.get('/game/:id', (req, res) => {
+    res.sendFile(__dirname + '/public/game.html');
 });
 
 // Start the server
