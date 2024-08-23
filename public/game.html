@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who Said It?</title>
+    <link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+    <header>
+        <h1>Who Said It?</h1>
+    </header>
+    
+    <div class="game-container">
+        <div class="card">
+            <div class="timer">
+                <span id="timer">60</span>
+            </div>
+            <div class="word-to-guess">
+                <h2>Word to Guess</h2>
+                <p id="word">Placeholder Word</p>
+            </div>
+            <div class="forbidden-words">
+                <h3>Forbidden Words</h3>
+                <ul id="forbidden-list">
+                    <li>Word 1</li>
+                    <li>Word 2</li>
+                    <li>Word 3</li>
+                    <li>Word 4</li>
+                    <li>Word 5</li>
+                </ul>
+            </div>
+            <div class="buttons">
+                <button id="confirmButton">Confirm</button>
+                <button id="buzzButton">Buzz</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/game.js"></script>
+</body>
+</html>

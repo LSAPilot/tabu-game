@@ -15,27 +15,6 @@ const io = socketIo(server);
 // Serve static files from the 'public' directory
 app.use(express.static('public'));
 
-// Routes
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
-});
-
-// Generate a unique lobby ID and redirect to the name page
-app.get('/create-lobby', (req, res) => {
-    const lobbyId = uuidv4();
-    res.redirect(`/name?lobbyId=${lobbyId}`);
-});
-
-// Handle name selection page
-app.get('/name', (req, res) => {
-    res.sendFile(__dirname + '/public/name.html');
-});
-
-// Handle lobby page
-app.get('/lobby/:id', (req, res) => {
-    res.sendFile(__dirname + '/public/lobby.html');
-});
-
 // Lobby system
 let lobbies = {};
 
@@ -60,10 +39,18 @@ io.on('connection', (socket) => {
     socket.on('selectRole', ({ lobbyId, playerName, team, role }) => {
         const lobby = lobbies[lobbyId];
         const player = lobby.players.find(p => p.id === socket.id);
+
         if (player) {
-            player.role = `${team} ${role}`;
-            io.to(lobbyId).emit('updateLobby', lobby);
-            console.log(`${playerName} selected role ${team} ${role}`);
+            const roleName = `${team} ${role}`;
+            const roleTaken = lobby.players.some(p => p.role === roleName);
+
+            if (!roleTaken) {
+                player.role = roleName;
+                io.to(lobbyId).emit('roleSelected', { team, role, name: playerName });
+                console.log(`${playerName} selected role ${team} ${role}`);
+            } else {
+                socket.emit('roleTaken', { team, role });
+            }
         }
     });
 
@@ -96,6 +83,22 @@ io.on('connection', (socket) => {
     socket.on('confirmWord', (lobbyId) => {
         io.to(lobbyId).emit('confirmWord');
     });
+});
+
+// Generate a unique lobby ID and redirect to the name page
+app.get('/create-lobby', (req, res) => {
+    const lobbyId = uuidv4();
+    res.redirect(`/name?lobbyId=${lobbyId}`);
+});
+
+// Handle name selection page
+app.get('/name', (req, res) => {
+    res.sendFile(__dirname + '/public/name.html');
+});
+
+// Handle lobby page
+app.get('/lobby/:id', (req, res) => {
+    res.sendFile(__dirname + '/public/lobby.html');
 });
 
 // Start the server

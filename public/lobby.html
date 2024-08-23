@@ -13,35 +13,41 @@
             <h2>Team A</h2>
             <div class="role">
                 <span>Speaker:</span>
-                <button onclick="selectRole('Team A', 'Speaker')">Choose</button>
+                <button data-role="Team A Speaker" onclick="selectRole('Team A', 'Speaker')">Choose</button>
             </div>
             <div class="role">
                 <span>Guesser:</span>
-                <button onclick="selectRole('Team A', 'Guesser')">Choose</button>
+                <button data-role="Team A Guesser" onclick="selectRole('Team A', 'Guesser')">Choose</button>
             </div>
         </div>
         <div class="team">
             <h2>Team B</h2>
             <div class="role">
                 <span>Speaker:</span>
-                <button onclick="selectRole('Team B', 'Speaker')">Choose</button>
+                <button data-role="Team B Speaker" onclick="selectRole('Team B', 'Speaker')">Choose</button>
             </div>
             <div class="role">
                 <span>Guesser:</span>
-                <button onclick="selectRole('Team B', 'Guesser')">Choose</button>
+                <button data-role="Team B Guesser" onclick="selectRole('Team B', 'Guesser')">Choose</button>
             </div>
         </div>
     </div>
+    <button id="copyLinkButton">Copy Invite Link</button>
     <button id="startGameButton">Start Game</button>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="/lobby.js"></script>
     <script>
-        function selectRole(team, role) {
-            // Here, you would emit a socket event to assign the role
-            // Example: socket.emit('selectRole', { team: team, role: role });
-            alert(`You selected ${role} for ${team}`);
-        }
+        const copyLinkButton = document.getElementById('copyLinkButton');
+        copyLinkButton.addEventListener('click', () => { 
+            const lobbyId = window.location.pathname.split('/').pop();
+            const inviteLink = `${window.location.origin}/name?lobbyId=${lobbyId}`;
+            navigator.clipboard.writeText(inviteLink).then(() => {
+                alert('Lobby link copied to clipboard!');
+            }).catch(err => {
+                alert('Failed to copy link: ', err);
+            });
+        });
     </script>
 </body>
 </html>
