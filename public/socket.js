@@ -36,6 +36,15 @@ export function initializeSocket() {
         handleNewRound(data);
     });
 
+    socket.on('clearWords', () => {
+        console.log('Received clearWords event from server. Clearing current words.');
+
+        // Clear the word-to-guess element and forbidden words list
+        document.getElementById('word').textContent = '';
+        const forbiddenList = document.getElementById('forbidden-list');
+        forbiddenList.innerHTML = ''; // Clear any existing content
+    });
+
     return socket;
 }
 

@@ -46,14 +46,18 @@ export function handleTimerEnd(playerRole, activeTeam) {
 }
 
 export function handleNewRound(data) {
-    const { word, forbiddenWords } = data;
+    console.log('Received newRound event from server:', data);
 
-    document.getElementById('word').textContent = word;
-    console.log('Word to guess updated:', word);
+        const { word, forbiddenWords } = data;
 
-    const forbiddenList = document.getElementById('forbidden-list');
-    forbiddenList.innerHTML = ''; // Clear any existing content
-    forbiddenWords.forEach(word => {
+        // Update the word-to-guess element
+        document.getElementById('word').textContent = word;
+        console.log('Word to guess updated:', word);
+
+        // Update the forbidden-words list
+        const forbiddenList = document.getElementById('forbidden-list');
+        forbiddenList.innerHTML = ''; // Clear any existing content
+        forbiddenWords.forEach(word => {
         const listItem = document.createElement('li');
         listItem.textContent = word;
         forbiddenList.appendChild(listItem);
