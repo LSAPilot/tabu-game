@@ -18,6 +18,8 @@ app.use(express.static('public'));
 // Lobby system
 let lobbies = {};
 
+let roleName;
+
 function startTimer(socket, lobbyId, duration) {
     let timeLeft = duration;
 
@@ -57,7 +59,7 @@ io.on('connection', (socket) => {
         console.log(`${playerName} joined lobby ${lobbyId}`);
     });
 
-    // Handle role selection
+    // Handle role selection and store role information
     socket.on('selectRole', ({ lobbyId, playerName, team, role }) => {
         const lobby = lobbies[lobbyId];
         const player = lobby.players.find(p => p.id === socket.id);
@@ -67,13 +69,33 @@ io.on('connection', (socket) => {
             const roleTaken = lobby.players.some(p => p.role === roleName);
 
             if (!roleTaken) {
-                player.role = roleName;
+                player.role = roleName; // Store the role in the player's data
                 io.to(lobbyId).emit('roleSelected', { team, role, name: playerName });
                 socket.emit('roleAssigned', { role: roleName });
                 console.log(`${playerName} selected role ${team} ${role}`);
             } else {
                 socket.emit('roleTaken', { team, role });
             }
+        }
+    });
+
+    // Handle reconnection by sending the player's stored role back
+    socket.on('requestPlayerData', ({ lobbyId, playerName }) => {
+        const lobby = lobbies[lobbyId];
+        if (lobby) {
+            const player = lobby.players.find(p => p.name === playerName);
+            if (player) {
+                // Emit the player's data back to the client, including the role
+                socket.emit('playerData', {
+                    name: player.name,
+                    role: player.role, // Retrieve the stored role
+                    team: player.role ? player.role.split(' ')[0] : null // Extract team from role
+                });
+            } else {
+                console.log(`Player ${playerName} not found in lobby ${lobbyId}`);
+            }
+        } else {
+            console.log(`Lobby ${lobbyId} not found`);
         }
     });
 

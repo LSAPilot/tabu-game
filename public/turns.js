@@ -12,10 +12,12 @@ document.addEventListener('DOMContentLoaded', function () {
     socket.emit('joinLobby', { lobbyId, playerName });
 
     // Listen for the role assigned by the server
-    socket.on('roleAssigned', (data) => {
+    socket.emit('requestPlayerData', { lobbyId, playerName });
+
+    socket.on('playerData', (data) => {
+        console.log('Received player data:', data);  // Debugging log
         playerRole = data.role;
-        console.log('Assigned role:', playerRole);
-        updateTurnUI();
+        console.log('Player Role:', playerRole);
     });
 
     // Update the UI based on the active team and player role
@@ -65,6 +67,8 @@ document.addEventListener('DOMContentLoaded', function () {
         updateTurnUI();
     }
 
+    console.log(playerName)
+    console.log(playerRole)
     // Initial UI setup
     updateTurnUI();
 });
