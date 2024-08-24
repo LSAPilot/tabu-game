@@ -166,7 +166,7 @@ function handleConfirmWord(socket, lobbyId) {
 
     console.log(`Team ${team} score updated: ${lobby.teamAScore}-${lobby.teamBScore}`);
 
-    // Broadcast the updated score to all players in the lobby
+    // Broadcast the updated score to all players in the lobby TODO: receive on client properly
     io.to(lobbyId).emit('updateScores', {
         teamAScore: lobby.teamAScore,
         teamBScore: lobby.teamBScore
