@@ -144,9 +144,11 @@ function handleDisconnect(socket) {
 // Function to handle the confirm word event
 function handleConfirmWord(socket, lobbyId) {
     const lobby = lobbies[lobbyId];
+    console.log(lobbies, lobbyId);
     if (!lobby) return; // If the lobby doesn't exist, exit the function
 
     const player = lobby.players.find(p => p.id === socket.id);
+    console.log(player);
     if (!player) return; // If the player doesn't exist, exit the function
 
     const team = player.role.includes('Team A') ? 'A' : 'B'; // Determine which team the player belongs to
@@ -172,7 +174,7 @@ function handleConfirmWord(socket, lobbyId) {
 
     // Start a new round with a new word
     startNewRound(lobbyId);
-    console.log(`New word for lobby ${lobbyId} is: ${phrase.Begriff}`);
+    console.log(startNewRound);
 }
 
 // Socket.io event listeners
@@ -221,9 +223,9 @@ io.on('connection', (socket) => {
     });
 
     // Correctly handle the confirmWord event
-    socket.on('confirmWord', () => {
+    socket.on('confirmWord', (lobbyId) => {
         console.log("received input to confirm word")
-        const lobbyId = Object.keys(socket.rooms).find(r => r !== socket.id);
+        console.log(lobbyId);
         handleConfirmWord(socket, lobbyId);
     });
 

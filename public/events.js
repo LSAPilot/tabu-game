@@ -19,7 +19,8 @@ export function initializeEventListeners(socket) {
         }
     });
     document.getElementById('confirmButton').addEventListener('click', function () {
+        const lobbyId = window.location.pathname.split('/').pop();
         console.log("Confirm button clicked");
-        socket.emit('confirmWord'); // Emit the confirmWord event
+        socket.emit('confirmWord', lobbyId); // Emit the confirmWord event
     });
 }
