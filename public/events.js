@@ -18,4 +18,8 @@ export function initializeEventListeners(socket) {
             socket.emit('startTimer', lobbyId, 60); // Start a 60-second timer
         }
     });
+    document.getElementById('confirmButton').addEventListener('click', function () {
+        console.log("Confirm button clicked");
+        socket.emit('confirmWord'); // Emit the confirmWord event
+    });
 }

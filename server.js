@@ -45,23 +45,28 @@ function startNewRound(lobbyId) {
         const lobby = lobbies[lobbyId];
         if (!lobby) return;
 
-        const activeTeam = lobby.activeTeam; // Assuming you have logic to determine the active team
+        const activeTeam = lobby.activeTeam; // Determine the active team
         const guesserRole = `Team ${activeTeam} Guesser`;
 
         // Store the phrase in the lobby's state
         lobby.currentPhrase = phrase;
         console.log(`New phrase for lobby ${lobbyId}:`, phrase);
 
-        // Broadcast the word and forbidden words to all players except the guesser
+        // Broadcast the word and forbidden words to all players
+        // The guesser of the active team receives question marks instead of the actual phrase
         lobby.players.forEach(player => {
-            if (player.role !== guesserRole) {
+            if (player.role === guesserRole) {
+                io.to(player.id).emit('newRound', {
+                    word: '???',
+                    forbiddenWords: phrase["Tabu-Wörter"].map(() => '???')
+                });
+                console.log(`Sending question marks to ${player.name} (role: ${player.role}, active guesser)`);
+            } else {
                 io.to(player.id).emit('newRound', {
                     word: phrase.Begriff,
                     forbiddenWords: phrase["Tabu-Wörter"]
                 });
                 console.log(`Broadcasting phrase to ${player.name} (role: ${player.role})`);
-            } else {
-                console.log(`Not sending phrase to ${player.name} (role: ${player.role}, guesser of active team)`);
             }
         });
     });
@@ -136,6 +141,40 @@ function handleDisconnect(socket) {
     }
 }
 
+// Function to handle the confirm word event
+function handleConfirmWord(socket, lobbyId) {
+    const lobby = lobbies[lobbyId];
+    if (!lobby) return; // If the lobby doesn't exist, exit the function
+
+    const player = lobby.players.find(p => p.id === socket.id);
+    if (!player) return; // If the player doesn't exist, exit the function
+
+    const team = player.role.includes('Team A') ? 'A' : 'B'; // Determine which team the player belongs to
+
+    // Initialize the scores if they don't exist
+    lobby.teamAScore = lobby.teamAScore || 0;
+    lobby.teamBScore = lobby.teamBScore || 0;
+
+    // Increment the appropriate team's score
+    if (team === 'A') {
+        lobby.teamAScore += 1;
+    } else {
+        lobby.teamBScore += 1;
+    }
+
+    console.log(`Team ${team} score updated: ${lobby.teamAScore}-${lobby.teamBScore}`);
+
+    // Broadcast the updated score to all players in the lobby
+    io.to(lobbyId).emit('updateScores', {
+        teamAScore: lobby.teamAScore,
+        teamBScore: lobby.teamBScore
+    });
+
+    // Start a new round with a new word
+    startNewRound(lobbyId);
+    console.log(`New word for lobby ${lobbyId} is: ${phrase.Begriff}`);
+}
+
 // Socket.io event listeners
 io.on('connection', (socket) => {
     console.log('A user connected:', socket.id);
@@ -181,8 +220,17 @@ io.on('connection', (socket) => {
         startTimer(lobbyId, duration);
     });
 
+    // Correctly handle the confirmWord event
+    socket.on('confirmWord', () => {
+        console.log("received input to confirm word")
+        const lobbyId = Object.keys(socket.rooms).find(r => r !== socket.id);
+        handleConfirmWord(socket, lobbyId);
+    });
+
+    // Handle the buzz event
     socket.on('buzz', (lobbyId) => io.to(lobbyId).emit('buzz'));
-    socket.on('confirmWord', (lobbyId) => io.to(lobbyId).emit('confirmWord'));
+
+    // Handle disconnection
     socket.on('disconnect', () => handleDisconnect(socket));
 });
 
