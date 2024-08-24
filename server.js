@@ -17,7 +17,6 @@ app.use(express.static('public'));
 
 // Lobby system
 let lobbies = {};
-let roleName;
 
 function startTimer(socket, lobbyId, duration) {
     let timeLeft = duration;
@@ -58,42 +57,45 @@ io.on('connection', (socket) => {
         console.log(`${playerName} joined lobby ${lobbyId}`);
     });
 
-    // Handle role selection and store role information
     socket.on('selectRole', ({ lobbyId, playerName, team, role }) => {
         const lobby = lobbies[lobbyId];
-        const player = lobby.players.find(p => p.id === socket.id);
-
+        if (!lobby) return;  // Safety check
+    
+        const player = lobby.players.find(p => p.name === playerName);
+    
         if (player) {
-            roleName = `${team} ${role}`;
+            const roleName = `${team} ${role}`;
             const roleTaken = lobby.players.some(p => p.role === roleName);
-
+    
             if (!roleTaken) {
-                player.role = roleName; // Store the role in the player's data
+                console.log('Before assigning role:', JSON.stringify(lobby.players));
+                player.role = roleName;
+                console.log('After assigning role:', JSON.stringify(lobby.players));
                 io.to(lobbyId).emit('roleSelected', { team, role, name: playerName });
                 socket.emit('roleAssigned', { role: roleName });
-                console.log(`${playerName} selected role ${team} ${role}`);
+                console.log(`${playerName} selected role ${roleName}`);
             } else {
                 socket.emit('roleTaken', { team, role });
             }
         }
     });
 
-    // Handle reconnection by sending the player's stored role back
     socket.on('requestPlayerData', ({ lobbyId, playerName }) => {
         const lobby = lobbies[lobbyId];
-        if (lobby) {
-            const player = lobby.players.find(p => p.name === playerName);
-            if (player) {
-                // Emit the player's data back to the client, including the role
-                socket.emit('playerData', {
-                    name: player.name,
-                    role: roleName
-                });
-            } else {
-                console.log(`Player ${playerName} not found in lobby ${lobbyId}`);
-            }
-        } else {
+        if (!lobby) {
             console.log(`Lobby ${lobbyId} not found`);
+            return;  // Safety check
+        }
+    
+        const player = lobby.players.find(p => p.name === playerName);
+        if (player) {
+            console.log(`Sending data for player ${playerName}:`, player);
+            socket.emit('playerData', {
+                name: player.name,
+                role: player.role  // Send the stored role
+            });
+        } else {
+            console.log(`Player ${playerName} not found in lobby ${lobbyId}`);
         }
     });
 
@@ -122,13 +124,10 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         console.log('User disconnected:', socket.id);
         for (const [lobbyId, lobby] of Object.entries(lobbies)) {
-            const index = lobby.players.findIndex(player => player.id === socket.id);
-            if (index !== -1) {
-                lobby.players.splice(index, 1);
-                io.to(lobbyId).emit('updateLobby', lobby);
-                if (lobby.players.length === 0) {
-                    delete lobbies[lobbyId];
-                }
+            const player = lobby.players.find(player => player.id === socket.id);
+            if (player) {
+                player.id = null; // Mark player as disconnected, but keep their role and other data
+                console.log(`Player ${player.name} marked as disconnected in lobby ${lobbyId}`);
                 break;
             }
         }
