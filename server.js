@@ -17,7 +17,6 @@ app.use(express.static('public'));
 
 // Lobby system
 let lobbies = {};
-
 let roleName;
 
 function startTimer(socket, lobbyId, duration) {
@@ -65,7 +64,7 @@ io.on('connection', (socket) => {
         const player = lobby.players.find(p => p.id === socket.id);
 
         if (player) {
-            const roleName = `${team} ${role}`;
+            roleName = `${team} ${role}`;
             const roleTaken = lobby.players.some(p => p.role === roleName);
 
             if (!roleTaken) {
@@ -88,8 +87,7 @@ io.on('connection', (socket) => {
                 // Emit the player's data back to the client, including the role
                 socket.emit('playerData', {
                     name: player.name,
-                    role: player.role, // Retrieve the stored role
-                    team: player.role ? player.role.split(' ')[0] : null // Extract team from role
+                    role: roleName
                 });
             } else {
                 console.log(`Player ${playerName} not found in lobby ${lobbyId}`);

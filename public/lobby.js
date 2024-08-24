@@ -25,6 +25,7 @@ startGameButton.addEventListener('click', () => {
 
 function selectRole(team, role) {
     socket.emit('selectRole', { lobbyId, playerName, team, role });
+    
 }
 
 socket.on('roleSelected', ({ team, role, name }) => {
@@ -43,3 +44,4 @@ socket.on('startGame', () => {
 socket.on('gameStarted', () => {
     window.location.href = `/game/${lobbyId}`;
 });
+

@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('Received player data:', data);  // Debugging log
         playerRole = data.role;
         console.log('Player Role:', playerRole);
+        updateTurnUI();
     });
 
     // Update the UI based on the active team and player role
@@ -69,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     console.log(playerName)
     console.log(playerRole)
+    console.log(activeTeam)
     // Initial UI setup
     updateTurnUI();
 });
