@@ -1,24 +1,26 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Fetch the JSON data
-    fetch('/phrases.json') // Ensure this path is correct
-        .then(response => response.json())
-        .then(data => {
-            // Select a random phrase from the JSON data
-            const randomIndex = Math.floor(Math.random() * data.Begriffe.length);
-            const phrase = data.Begriffe[randomIndex];
+    const socket = io();
 
-            // Inject the 'Begriff' into the word-to-guess element
-            document.getElementById('word').textContent = phrase.Begriff;
+    // Listen for the 'newRound' event to receive the word and forbidden words
+    socket.on('newRound', (data) => {
+        console.log('Received newRound event from server:', data);
 
-            // Inject the forbidden words into the forbidden-list element
-            const forbiddenList = document.getElementById('forbidden-list');
-            forbiddenList.innerHTML = ''; // Clear any existing content
-            phrase["Tabu-Wörter"].forEach(word => {
-                const listItem = document.createElement('li');
-                listItem.textContent = word;
-                forbiddenList.appendChild(listItem);
-            });
-        })
-        .catch(error => console.error('Error fetching JSON:', error));
+        const { word, forbiddenWords } = data;
+
+        // Update the word-to-guess element
+        document.getElementById('word').textContent = word;
+        console.log('Word to guess updated:', word);
+
+        // Update the forbidden-words list
+        const forbiddenList = document.getElementById('forbidden-list');
+        forbiddenList.innerHTML = ''; // Clear any existing content
+        forbiddenWords.forEach(word => {
+            const listItem = document.createElement('li');
+            listItem.textContent = word;
+            forbiddenList.appendChild(listItem);
+            console.log('Added forbidden word:', word);
+        });
+    });
+
+    // Additional client-side logic...
 });
-

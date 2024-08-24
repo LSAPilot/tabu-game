@@ -3,6 +3,9 @@ const http = require('http');
 const socketIo = require('socket.io');
 const { v4: uuidv4 } = require('uuid');
 
+const fs = require('fs');
+const path = require('path');
+
 // Create an Express app
 const app = express();
 
@@ -17,6 +20,44 @@ app.use(express.static('public'));
 
 // Lobby system
 let lobbies = {};
+
+function getRandomPhrase(callback) {
+    fs.readFile(path.join(__dirname, 'public/phrases.json'), 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading phrases file:', err);
+            return callback(null);
+        }
+
+        const phrases = JSON.parse(data).Begriffe;
+        console.log('Phrases loaded from JSON:', phrases);
+
+        const randomIndex = Math.floor(Math.random() * phrases.length);
+        const selectedPhrase = phrases[randomIndex];
+        console.log('Selected phrase:', selectedPhrase);
+
+        callback(selectedPhrase);
+    });
+}
+
+// Function to start a new round and select a word
+function startNewRound(lobbyId) {
+    getRandomPhrase((phrase) => {
+        if (phrase) {
+            // Store the phrase in the lobby's state
+            lobbies[lobbyId].currentPhrase = phrase;
+            console.log(`Phrase stored in lobby ${lobbyId}:`, phrase);
+
+            // Broadcast the word and forbidden words to all players in the lobby
+            io.to(lobbyId).emit('newRound', {
+                word: phrase.Begriff,
+                forbiddenWords: phrase["Tabu-Wörter"]
+            });
+            console.log(`Broadcasting new phrase to lobby ${lobbyId}`);
+        } else {
+            console.error('Failed to retrieve a phrase.');
+        }
+    });
+}
 
 function startTimer(socket, lobbyId, duration) {
     let timeLeft = duration;
@@ -117,6 +158,7 @@ io.on('connection', (socket) => {
 
     socket.on('startTimer', (lobbyId, duration) => {
         console.log(`Timer started for lobby ${lobbyId} with duration ${duration} seconds`);
+        startNewRound(lobbyId); // Select and send a new word at the start of the timer
         startTimer(socket, lobbyId, duration);
     });
 
