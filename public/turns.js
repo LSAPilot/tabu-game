@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const socket = io();
-    let teamAScore = 1;
+    let teamAScore = 0;
     let teamBScore = 0;
     let activeTeam = 'A';
     let playerRole = null;
@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const teamBElement = document.getElementById('teamB');
         const startTimerButton = document.getElementById('startTimerButton');
 
+        console.log('Updating UI. Active Team:', activeTeam, 'Player Role:', playerRole);
+
         if (activeTeam === 'A') {
             teamAElement.classList.add('active-team');
             teamBElement.classList.remove('active-team');
@@ -40,13 +42,22 @@ document.addEventListener('DOMContentLoaded', function () {
             startTimerButton.classList.toggle('active-button', playerRole === 'Team B Speaker');
             startTimerButton.classList.toggle('inactive-button', playerRole !== 'Team B Speaker');
         }
+
+        console.log('Button classes:', startTimerButton.className);
     }
 
     // Handle the start timer button click
     document.getElementById('startTimerButton').addEventListener('click', function () {
         if ((activeTeam === 'A' && playerRole === 'Team A Speaker') || 
             (activeTeam === 'B' && playerRole === 'Team B Speaker')) {
-            console.log("Starting Timer")
+            console.log("Starting Timer");
+    
+            // Disable the button to prevent multiple clicks
+            const startTimerButton = document.getElementById('startTimerButton');
+            startTimerButton.disabled = true;
+            startTimerButton.classList.add('inactive-button');
+            startTimerButton.classList.remove('active-button');
+    
             socket.emit('startTimer', lobbyId, 60); // Start a 60-second timer
         }
     });
@@ -59,7 +70,19 @@ document.addEventListener('DOMContentLoaded', function () {
     // Handle the end of the timer
     socket.on('timerEnd', () => {
         console.log('Timer ended');
-        endTurn(); // End the current turn and switch to the other team
+        endTurn();
+
+        const startTimerButton = document.getElementById('startTimerButton');
+        startTimerButton.disabled = false;
+
+        if ((activeTeam === 'A' && playerRole === 'Team A Speaker') || 
+            (activeTeam === 'B' && playerRole === 'Team B Speaker')) {
+            startTimerButton.classList.add('active-button');
+            startTimerButton.classList.remove('inactive-button');
+        } else {
+            startTimerButton.classList.add('inactive-button');
+            startTimerButton.classList.remove('active-button');
+        }
     });
 
     // Function to end the current turn and switch teams

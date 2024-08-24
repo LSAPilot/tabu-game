@@ -53,19 +53,18 @@ h1 {
 .team-score {
     font-size: 1.2em;
     text-align: center;
+    color: #ccc;
 }
 
 .team-score h2 {
     font-size: 1.5em;
     margin-bottom: 5px;
-    color: #333;
 }
 
 .team-score p {
     font-size: 2em;
     font-weight: bold;
     margin: 0;
-    color: #007bff;
 }
 
 .timer {
@@ -155,11 +154,7 @@ button:active {
 }
 
 .active-team {
-    color: #007bff; /* Highlight active team in blue */
-}
-
-.inactive-team {
-    color: #ccc; /* Dim the inactive team */
+    color: #007bff !important; /* Highlight active team in blue */
 }
 
 .active-button {
@@ -169,7 +164,7 @@ button:active {
 }
 
 .inactive-button {
-    background-color: #ccc; /* Greyed out for inactive button */
-    color: white;
+    background-color: #ccc !important; /* Greyed out for inactive button */
+    color: white !important;
     cursor: not-allowed;
 }
