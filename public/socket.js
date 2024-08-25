@@ -64,9 +64,9 @@ export function initializeSocket() {
         console.log("buzzed");
         const overlay = document.getElementById('red-overlay');
         const body = document.body;
+        const sound = document.getElementById("buzz-sound");
 
-        // Show red overlay
-        overlay.classList.add('show');
+        sound.play();
 
         // Add screen shake effect
         body.classList.add('shake');
@@ -81,6 +81,10 @@ export function initializeSocket() {
     socket.on('confirm', ()=> {
         console.log("confirmed");
         const overlay = document.getElementById('green-overlay');
+        const sound = document.getElementById("confirm-sound");
+
+        sound.play();
+
         overlay.classList.add('show');
 
         setTimeout(() => {
