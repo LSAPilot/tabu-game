@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background: linear-gradient(180deg, #ccdae4 0%, #5DADE2 100%);
     margin: 0;
     padding: 20px;
     display: flex;
@@ -10,11 +10,11 @@ body {
     height: 100vh;
 }
 h1 {
-    color: #333;
+    color: #2C3E50;
     margin-bottom: 20px;
 }
 .name-form {
-    background-color: #fff;
+    background-color: #D5DBDB;
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 20px;
@@ -33,7 +33,7 @@ h1 {
     font-size: 1em;
 }
 .name-form button {
-    background-color: #007bff;
+    background-color: #FF6F61;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -42,5 +42,5 @@ h1 {
     font-size: 1em;
 }
 .name-form button:hover {
-    background-color: #0056b3;
+    background-color: #c55147;
 }

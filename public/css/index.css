@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f0f8ff;
+    background: linear-gradient(180deg, #ccdae4 0%, #5DADE2 100%);
     margin: 0;
     padding: 0;
     display: flex;
@@ -12,7 +12,7 @@ body {
 }
 
 h1 {
-    color: #333;
+    color: #2C3E50;
     font-size: 3em;
     margin-bottom: 20px;
 }
@@ -24,17 +24,17 @@ a {
     font-size: 1.5em;
     text-decoration: none;
     color: #fff;
-    background-color: #007bff;
+    background-color: #FF6F61;
     border-radius: 8px;
     transition: background-color 0.3s, transform 0.3s;
 }
 
 a:hover {
-    background-color: #0056b3;
+    background-color: #FF6F61;
     transform: translateY(-3px);
 }
 
 a:active {
-    background-color: #004085;
+    background-color: #a5463d;
     transform: translateY(1px);
 }

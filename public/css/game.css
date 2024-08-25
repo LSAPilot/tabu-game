@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
+    background: linear-gradient(180deg, #ccdae4 0%, #5DADE2 100%);
     margin: 0;
     padding: 0;
     display: flex;
@@ -9,15 +9,13 @@ body {
     justify-content: center;
     height: 100vh;
     text-align: center;
+    color: #2C3E50;
 }
 
 header {
-    background-color: #007bff;
-    color: white;
     width: 100%;
     padding: 10px 0;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 5px 0 10px 0;
 }
 
 h1 {
@@ -35,7 +33,7 @@ h1 {
 }
 
 .card {
-    background-color: white;
+    background-color: #e3e9e9;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 20px;
@@ -53,7 +51,7 @@ h1 {
 .team-score {
     font-size: 1.2em;
     text-align: center;
-    color: #ccc;
+    color: #9b9b9b;
 }
 
 .team-score h2 {
@@ -83,7 +81,7 @@ h1 {
     padding: 10px 20px;
     font-size: 1em;
     color: white;
-    background-color: #28a745;
+    background-color: #58D68D;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -96,7 +94,7 @@ h1 {
 }
 
 #startTimerButton:active {
-    background-color: #1e7e34;
+    background-color: #58D68D;
 }
 
 .word-to-guess {
@@ -145,23 +143,36 @@ button {
     padding: 10px 20px;
     font-size: 1em;
     color: white;
-    background-color: #007bff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-button:hover {
-    background-color: #0056b3;
+#confirmButton {
+    background-color: #58D68D;
 }
+
+#confirmButton:hover {
+    background-color: #218838;
+}
+
+
+#buzzButton {
+    background-color: #FF6F61;
+}
+
+#buzzButton:hover {
+    background-color: #c55147;
+}
+
 
 button:active {
     background-color: #003f7f;
 }
 
 .active-team {
-    color: #007bff !important; /* Highlight active team in blue */
+    color: #2C3E50 !important; /* Highlight active team in blue */
 }
 
 .active-button {
