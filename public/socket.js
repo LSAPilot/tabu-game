@@ -22,8 +22,8 @@ export function initializeSocket() {
         updateTurnUI(playerRole, activeTeam);
     });
 
-    socket.on('timerUpdate', (timeLeft) => {
-        handleTimerUpdate(timeLeft);
+    socket.on('timerUpdate', (duration) => {
+        handleTimerUpdate(duration);
     });
 
     socket.on('enableButtons', (timeLeft) => {

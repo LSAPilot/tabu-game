@@ -33,8 +33,27 @@ export function updateTurnUI() {
     console.log('Button classes:', startTimerButton.className);
 }
 
-export function handleTimerUpdate(timeLeft) {
-    document.getElementById('timer').textContent = timeLeft;
+export function handleTimerUpdate(duration) {
+    let timeLeft = 0;
+    timeLeft = duration;
+
+    // Update the button to show the timer is running
+    const startTimerButton = document.getElementById('startTimerButton');
+    startTimerButton.disabled = true;
+    startTimerButton.classList.add('inactive-button');
+    startTimerButton.classList.remove('active-button');
+
+    // Start the local countdown
+    const countdownTimer = setInterval(() => {
+        timeLeft--;
+
+        // Update the UI with the remaining time
+        document.getElementById('timer').textContent = timeLeft;
+        
+        if (timeLeft <= 0) {
+            clearInterval(countdownTimer);
+        }
+    }, 1000);
 }
 
 export function activateButtons(timeLeft) {

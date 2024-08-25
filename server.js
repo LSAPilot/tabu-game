@@ -76,14 +76,20 @@ function startNewRound(lobbyId) {
 // Function to manage the countdown timer
 function startTimer(lobbyId, duration) {
     let timeLeft = duration;
+
+    // Notify clients that the timer has started
+    io.to(lobbyId).emit('timerUpdate', duration);
+    io.to(lobbyId).emit('enableButtons', timeLeft);
+
     const timerInterval = setInterval(() => {
         timeLeft--;
-        io.to(lobbyId).emit('timerUpdate', timeLeft);
-        io.to(lobbyId).emit('enableButtons', timeLeft);
 
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
+
+            // Notify clients that the timer has ended
             io.to(lobbyId).emit('timerEnd');
+
             evaluateRoundOutcome(lobbyId);
             checkRoundScore(lobbyId);
             console.log(`Timer ended for lobby ${lobbyId}`);
