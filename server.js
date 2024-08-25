@@ -13,6 +13,8 @@ const io = socketIo(server);
 // Serve static files from the 'public' directory
 app.use(express.static('public'));
 
+const PORT = process.env.PORT || 3000;
+
 // Lobby system to manage lobbies and players
 let lobbies = {};
 
@@ -331,8 +333,7 @@ app.get('/game/:id', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/game.html'));
 });
 
-// Start the server
-const PORT = process.env.PORT || 3000;
+
 server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
