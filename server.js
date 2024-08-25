@@ -62,7 +62,6 @@ function startNewRound(lobbyId) {
                     word: '???',
                     forbiddenWords: phrase["Tabu-Wörter"].map(() => '???')
                 });
-                console.log(`Sending question marks to ${player.name} (role: ${player.role}, active guesser)`);
             } else {
                 io.to(player.id).emit('newRound', {
                     word: phrase.Begriff,
@@ -198,8 +197,6 @@ function evaluateRoundOutcome(lobbyId) {
             lobby.teamARounds += 1;
             lobby.teamBRounds += 1;
         }
-        console.log(`Round complete. Scores - Team A: ${lobby.teamAScore}, Team B: ${lobby.teamBScore}`);
-        console.log(`Rounds won - Team A: ${lobby.teamARounds}, Team B: ${lobby.teamBRounds}`);
 
         // Reset scores for the next round
         lobby.teamAScore = 0;
@@ -229,21 +226,18 @@ function checkRoundScore(lobbyId) {
                 result: 'draw',
                 message: 'The game ended in a draw!',
             });
-            console.log('The game ended in a draw!');
         } else if (lobby.teamARounds >= 5) {
             // Team A wins
             io.to(lobbyId).emit('gameEnd', {
                 result: 'teamA',
                 message: 'Team A has won the game!',
             });
-            console.log('Team A has won the game!');
         } else if (lobby.teamBRounds >= 5) {
             // Team B wins
             io.to(lobbyId).emit('gameEnd', {
                 result: 'teamB',
                 message: 'Team B has won the game!',
             });
-            console.log('Team B has won the game!');
         }
         lobby.teamARounds = 0;
         lobby.teamBRounds = 0;
