@@ -243,6 +243,10 @@ function checkRoundScore(lobbyId) {
             });
             console.log('Team B has won the game!');
         }
+        lobby.teamARounds = 0;
+        lobby.teamBRounds = 0;
+        lobby.teamAScore = 0;
+        lobby.teamBScore = 0;    
     }
 }
 
