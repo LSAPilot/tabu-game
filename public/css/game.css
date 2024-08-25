@@ -61,10 +61,17 @@ h1 {
     margin-bottom: 5px;
 }
 
-.team-score p {
+.teamRounds {
     font-size: 2em;
     font-weight: bold;
     margin: 0;
+    border: 2px solid grey;
+}
+
+.teamScores {
+    font-size: 1.5em;
+    margin: 0;
+    border: 2px solid grey;
 }
 
 .timer {

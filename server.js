@@ -78,10 +78,13 @@ function startTimer(lobbyId, duration) {
     const timerInterval = setInterval(() => {
         timeLeft--;
         io.to(lobbyId).emit('timerUpdate', timeLeft);
+        io.to(lobbyId).emit('enableButtons', timeLeft);
 
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
             io.to(lobbyId).emit('timerEnd');
+            evaluateRoundOutcome(lobbyId);
+            checkRoundScore(lobbyId);
             console.log(`Timer ended for lobby ${lobbyId}`);
         }
     }, 1000);
@@ -147,24 +150,20 @@ function handleConfirmWord(socket, lobbyId) {
     console.log(lobbies, lobbyId);
     if (!lobby) return; // If the lobby doesn't exist, exit the function
 
-    const player = lobby.players.find(p => p.id === socket.id);
-    console.log(player);
-    if (!player) return; // If the player doesn't exist, exit the function
-
-    const team = player.role.includes('Team A') ? 'A' : 'B'; // Determine which team the player belongs to
+    const activeTeam = lobby.activeTeam;
 
     // Initialize the scores if they don't exist
     lobby.teamAScore = lobby.teamAScore || 0;
     lobby.teamBScore = lobby.teamBScore || 0;
 
     // Increment the appropriate team's score
-    if (team === 'A') {
+    if (activeTeam === 'A') {
         lobby.teamAScore += 1;
     } else {
         lobby.teamBScore += 1;
     }
 
-    console.log(`Team ${team} score updated: ${lobby.teamAScore}-${lobby.teamBScore}`);
+    console.log(`Team ${activeTeam} score updated: ${lobby.teamAScore}-${lobby.teamBScore}`);
 
     // Broadcast the updated score to all players in the lobby TODO: receive on client properly
     io.to(lobbyId).emit('updateScores', {
@@ -176,6 +175,77 @@ function handleConfirmWord(socket, lobbyId) {
     startNewRound(lobbyId);
     console.log(startNewRound);
 }
+
+function evaluateRoundOutcome(lobbyId) {
+    const lobby = lobbies[lobbyId];
+    if (!lobby) return; // If the lobby doesn't exist, exit the function
+
+    // Ensure rounds are initialized as numbers
+    lobby.teamARounds = lobby.teamARounds || 0;
+    lobby.teamBRounds = lobby.teamBRounds || 0;
+
+    // Only evaluate the round outcome when it's Team A's turn again
+    if (lobby.activeTeam === 'B') {
+        // Compare scores and increment the appropriate team's round count
+        if (lobby.teamAScore > lobby.teamBScore) {
+            lobby.teamARounds += 1;
+        } else if (lobby.teamBScore > lobby.teamAScore) {
+            lobby.teamBRounds += 1;
+        } else if (lobby.teamAScore === lobby.teamBScore) {
+            // If scores are equal, both teams get a round win
+            lobby.teamARounds += 1;
+            lobby.teamBRounds += 1;
+        }
+        console.log(`Round complete. Scores - Team A: ${lobby.teamAScore}, Team B: ${lobby.teamBScore}`);
+        console.log(`Rounds won - Team A: ${lobby.teamARounds}, Team B: ${lobby.teamBRounds}`);
+
+        // Reset scores for the next round
+        lobby.teamAScore = 0;
+        lobby.teamBScore = 0;
+
+        // Broadcast the updated round wins to all players in the lobby
+        io.to(lobbyId).emit('updateRounds', {
+            teamARounds: lobby.teamARounds,
+            teamBRounds: lobby.teamBRounds
+        });
+    }
+}
+
+function checkRoundScore(lobbyId) {
+    const lobby = lobbies[lobbyId];
+    if (!lobby) return; // If the lobby doesn't exist, exit the function
+
+    // Ensure rounds are initialized as numbers
+    lobby.teamARounds = lobby.teamARounds || 0;
+    lobby.teamBRounds = lobby.teamBRounds || 0;
+
+    // Check if any team has reached 5 rounds
+    if (lobby.teamARounds >= 5 || lobby.teamBRounds >= 5) {
+        if (lobby.teamARounds >= 5 && lobby.teamBRounds >= 5) {
+            // If both teams have 5 rounds, it's a draw
+            io.to(lobbyId).emit('gameEnd', {
+                result: 'draw',
+                message: 'The game ended in a draw!',
+            });
+            console.log('The game ended in a draw!');
+        } else if (lobby.teamARounds >= 5) {
+            // Team A wins
+            io.to(lobbyId).emit('gameEnd', {
+                result: 'teamA',
+                message: 'Team A has won the game!',
+            });
+            console.log('Team A has won the game!');
+        } else if (lobby.teamBRounds >= 5) {
+            // Team B wins
+            io.to(lobbyId).emit('gameEnd', {
+                result: 'teamB',
+                message: 'Team B has won the game!',
+            });
+            console.log('Team B has won the game!');
+        }
+    }
+}
+
 
 // Socket.io event listeners
 io.on('connection', (socket) => {
@@ -225,8 +295,12 @@ io.on('connection', (socket) => {
     // Correctly handle the confirmWord event
     socket.on('confirmWord', (lobbyId) => {
         console.log("received input to confirm word")
-        console.log(lobbyId);
         handleConfirmWord(socket, lobbyId);
+    });
+
+    socket.on('buzzWord', (lobbyId) => {
+        console.log("received input to buzz word")
+        startNewRound(lobbyId);
     });
 
     // Handle the buzz event

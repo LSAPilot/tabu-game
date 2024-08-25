@@ -1,6 +1,6 @@
 // socket.js
 
-import { updateTurnUI, handleTimerUpdate, handleNewRound, handleTimerEnd } from './ui.js';
+import { updateTurnUI, handleTimerUpdate, handleNewRound, handleTimerEnd, updateScoreUi, activateButtons, updateRoundsUi, updateWinner } from './ui.js';
 
 let playerRole = null;
 let activeTeam = 'A';
@@ -26,6 +26,10 @@ export function initializeSocket() {
         handleTimerUpdate(timeLeft);
     });
 
+    socket.on('enableButtons', (timeLeft) => {
+        activateButtons(timeLeft);
+    });
+
     socket.on('timerEnd', () => {
         handleTimerEnd(socket, playerRole, activeTeam);
         activeTeam = activeTeam === 'A' ? 'B' : 'A';
@@ -43,6 +47,18 @@ export function initializeSocket() {
         const forbiddenList = document.getElementById('forbidden-list');
         forbiddenList.innerHTML = '';
     });
+
+    socket.on('updateScores', (data) => {
+        updateScoreUi(data);
+    })
+
+    socket.on('updateRounds', (data) => {
+        updateRoundsUi(data);
+    })
+
+    socket.on('gameEnd', (data) => {
+        updateWinner(data);
+    })
 
     return socket;
 }

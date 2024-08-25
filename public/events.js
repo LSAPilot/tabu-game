@@ -15,12 +15,17 @@ export function initializeEventListeners(socket) {
             startTimerButton.classList.add('inactive-button');
             startTimerButton.classList.remove('active-button');
 
-            socket.emit('startTimer', lobbyId, 60); // Start a 60-second timer
+            socket.emit('startTimer', lobbyId, 5); // Start a 60-second timer
         }
     });
     document.getElementById('confirmButton').addEventListener('click', function () {
         const lobbyId = window.location.pathname.split('/').pop();
         console.log("Confirm button clicked");
         socket.emit('confirmWord', lobbyId); // Emit the confirmWord event
+    });
+    document.getElementById('buzzButton').addEventListener('click', function () {
+        const lobbyId = window.location.pathname.split('/').pop();
+        console.log("Buzz button clicked");
+        socket.emit('buzzWord', lobbyId); // Emit the confirmWord event
     });
 }

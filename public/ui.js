@@ -2,6 +2,9 @@
 
 import { getPlayerRole, getActiveTeam} from './socket.js';
 
+const confirmButton = document.getElementById('confirmButton');
+const buzzButton = document.getElementById('buzzButton');
+
 export function updateTurnUI() {
     const teamAElement = document.getElementById('teamA');
     const teamBElement = document.getElementById('teamB');
@@ -9,6 +12,9 @@ export function updateTurnUI() {
 
     const playerRole = getPlayerRole();
     const activeTeam = getActiveTeam();
+
+    confirmButton.disabled = true;
+    buzzButton.disabled = true;
 
     if (activeTeam === 'A') {
         teamAElement.classList.add('active-team');
@@ -29,6 +35,16 @@ export function updateTurnUI() {
 
 export function handleTimerUpdate(timeLeft) {
     document.getElementById('timer').textContent = timeLeft;
+}
+
+export function activateButtons(timeLeft) {
+    if (timeLeft > 0){
+        confirmButton.disabled = false;
+        buzzButton.disabled = false;
+    } else {
+        confirmButton.disabled = true;
+        confirmButton.disabled = true;
+    }
 }
 
 export function handleTimerEnd(playerRole, activeTeam) {
@@ -63,4 +79,41 @@ export function handleNewRound(data) {
         forbiddenList.appendChild(listItem);
         console.log('Added forbidden word:', word);
     });
+}
+
+export function updateScoreUi(data) {
+    console.log("received new scores from server:", data);
+    const { teamAScore, teamBScore } = data;
+
+    // Find the elements in the DOM
+    const teamAScoreElement = document.getElementById("teamAScore");
+    const teamBScoreElement = document.getElementById("teamBScore");
+
+    // Update the elements with the new scores
+    teamAScoreElement.textContent = teamAScore;
+    teamBScoreElement.textContent = teamBScore;
+}
+
+export function updateRoundsUi(data) {
+    console.log("received new rounds from server:", data);
+    const { teamARounds, teamBRounds } = data;
+
+    // Find the elements in the DOM
+    const teamARoundElement = document.getElementById("teamARounds");
+    const teamBRoundElement = document.getElementById("teamBRounds");
+
+    // Update the elements with the new scores
+    teamARoundElement.textContent = teamARounds;
+    teamBRoundElement.textContent = teamBRounds;
+}
+
+export function updateWinner(data) {
+    console.log("received new winner from server:", data);
+    const { winner, message } = data;
+
+    // Find the elements in the DOM
+    const winningHeader = document.getElementById("whoWon");
+
+    // Update the elements with the new scores
+    winningHeader.textContent = message;
 }
