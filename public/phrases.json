@@ -458,6 +458,110 @@
     {
         "Begriff": "Hydrologie",
         "Tabu-Wörter": ["Wasser", "Kreislauf", "Flüsse", "Ozeane", "Niederschlag"]
+    },
+    {
+      "Begriff": "Uhr",
+      "Tabu-Wörter": ["Zeit", "Armband", "Zifferblatt", "Sekunde", "Minuten"]
+    },
+    {
+      "Begriff": "Wald",
+      "Tabu-Wörter": ["Bäume", "Natur", "Tiere", "Holz", "Blätter"]
+    },
+    {
+      "Begriff": "Wasser",
+      "Tabu-Wörter": ["Flüssigkeit", "Trinken", "Meer", "See", "Nass"]
+    },
+    {
+      "Begriff": "Winter",
+      "Tabu-Wörter": ["Kalt", "Schnee", "Jahreszeit", "Eis", "Frost"]
+    },
+    {
+      "Begriff": "Zahnarzt",
+      "Tabu-Wörter": ["Zähne", "Bohrer", "Mund", "Behandlung", "Karies"]
+    },
+    {
+      "Begriff": "Zeitung",
+      "Tabu-Wörter": ["Nachrichten", "Lesen", "Papier", "Artikel", "Druck"]
+    },
+    {
+      "Begriff": "Zug",
+      "Tabu-Wörter": ["Schiene", "Fahren", "Lokomotive", "Reisen", "Bahnhof"]
+    },
+    {
+      "Begriff": "Zucker",
+      "Tabu-Wörter": ["Süß", "Kristall", "Naschen", "Weiß", "Kaffee"]
+    },
+    {
+      "Begriff": "Tisch",
+      "Tabu-Wörter": ["Möbel", "Essen", "Holz", "Stuhl", "Decke"]
+    },
+    {
+      "Begriff": "Fenster",
+      "Tabu-Wörter": ["Glas", "Haus", "Blick", "Raum", "Öffnen"]
+    },
+    {
+      "Begriff": "Brot",
+      "Tabu-Wörter": ["Backen", "Weizen", "Mehl", "Butter", "Frühstück"]
+    },
+    {
+      "Begriff": "Kaffeemaschine",
+      "Tabu-Wörter": ["Kaffee", "Trinken", "Filter", "Heiß", "Tasse"]
+    },
+    {
+      "Begriff": "Fernbedienung",
+      "Tabu-Wörter": ["Fernseher", "Knöpfe", "Zappen", "Gerät", "Steuern"]
+    },
+    {
+      "Begriff": "Laptop",
+      "Tabu-Wörter": ["Computer", "Tastatur", "Bildschirm", "Arbeiten", "Mobil"]
+    },
+    {
+      "Begriff": "Heizung",
+      "Tabu-Wörter": ["Wärme", "Winter", "Raum", "Thermostat", "Kalt"]
+    },
+    {
+      "Begriff": "Spiegel",
+      "Tabu-Wörter": ["Reflexion", "Glas", "Bild", "Schminken", "Zimmer"]
+    },
+    {
+      "Begriff": "Lampe",
+      "Tabu-Wörter": ["Licht", "Leuchten", "Raum", "Schalter", "Glühbirne"]
+    },
+    {
+      "Begriff": "Kissen",
+      "Tabu-Wörter": ["Schlafen", "Bett", "Kopf", "Bequem", "Decke"]
+    },
+    {
+      "Begriff": "Kalender",
+      "Tabu-Wörter": ["Datum", "Jahr", "Monat", "Tag", "Zeit"]
+    },
+    {
+      "Begriff": "Fernseher",
+      "Tabu-Wörter": ["Bildschirm", "Sendung", "Programm", "Film", "Kanal"]
+    },
+    {
+      "Begriff": "Kühlschrank",
+      "Tabu-Wörter": ["Kalt", "Lebensmittel", "Küche", "Gerät", "Frisch"]
+    },
+    {
+      "Begriff": "Waschmaschine",
+      "Tabu-Wörter": ["Wäsche", "Waschen", "Kleidung", "Sauber", "Gerät"]
+    },
+    {
+      "Begriff": "Staubsauger",
+      "Tabu-Wörter": ["Saugen", "Staub", "Boden", "Gerät", "Sauber"]
+    },
+    {
+      "Begriff": "Mikrowelle",
+      "Tabu-Wörter": ["Essen", "Erhitzen", "Küche", "Gerät", "Schnell"]
+    },
+    {
+      "Begriff": "Handtuch",
+      "Tabu-Wörter": ["Trocknen", "Bad", "Stoff", "Sauber", "Wasser"]
+    },
+    {
+      "Begriff": "Seife",
+      "Tabu-Wörter": ["Waschen", "Sauber", "Hände", "Duschen", "Schmutz"]
     }
     ]
 }
