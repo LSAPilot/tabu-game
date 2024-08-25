@@ -15,7 +15,7 @@ export function initializeEventListeners(socket) {
             startTimerButton.classList.add('inactive-button');
             startTimerButton.classList.remove('active-button');
 
-            socket.emit('startTimer', lobbyId, 5); // Start a 60-second timer
+            socket.emit('startTimer', lobbyId, 60); // Start a 60-second timer
         }
     });
     document.getElementById('confirmButton').addEventListener('click', function () {

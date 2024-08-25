@@ -60,6 +60,14 @@ export function initializeSocket() {
         updateWinner(data);
     })
 
+    socket.on('buzz', ()=> {            //TODO: Add animation for buzzing and confirming
+        console.log("buzzed");
+    })
+
+    socket.on('confirm', ()=> {
+        console.log("confirmed");
+    })
+
     return socket;
 }
 

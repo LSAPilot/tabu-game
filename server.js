@@ -300,15 +300,14 @@ io.on('connection', (socket) => {
     socket.on('confirmWord', (lobbyId) => {
         console.log("received input to confirm word")
         handleConfirmWord(socket, lobbyId);
+        io.to(lobbyId).emit('confirm')
     });
 
     socket.on('buzzWord', (lobbyId) => {
         console.log("received input to buzz word")
         startNewRound(lobbyId);
+        io.to(lobbyId).emit('buzz')
     });
-
-    // Handle the buzz event
-    socket.on('buzz', (lobbyId) => io.to(lobbyId).emit('buzz'));
 
     // Handle disconnection
     socket.on('disconnect', () => handleDisconnect(socket));
