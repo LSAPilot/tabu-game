@@ -62,10 +62,30 @@ export function initializeSocket() {
 
     socket.on('buzz', ()=> {            //TODO: Add animation for buzzing and confirming
         console.log("buzzed");
+        const overlay = document.getElementById('red-overlay');
+        const body = document.body;
+
+        // Show red overlay
+        overlay.classList.add('show');
+
+        // Add screen shake effect
+        body.classList.add('shake');
+
+        // Remove both effects after 1 second
+        setTimeout(() => {
+            overlay.classList.remove('show');
+            body.classList.remove('shake');
+        }, 300);
     })
 
     socket.on('confirm', ()=> {
         console.log("confirmed");
+        const overlay = document.getElementById('green-overlay');
+        overlay.classList.add('show');
+
+        setTimeout(() => {
+        overlay.classList.remove('show');
+        }, 300); 
     })
 
     return socket;
