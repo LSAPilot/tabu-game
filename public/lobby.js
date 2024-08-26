@@ -25,7 +25,6 @@ startGameButton.addEventListener('click', () => {
 
 function selectRole(team, role) {
     socket.emit('selectRole', { lobbyId, playerName, team, role });
-    
 }
 
 socket.on('roleSelected', ({ team, role, name }) => {
@@ -33,6 +32,14 @@ socket.on('roleSelected', ({ team, role, name }) => {
     if (button) {
         button.textContent = name; // Display player's name in the button
         button.disabled = true; // Disable the button for other users
+    }
+});
+
+socket.on('roleFreed', ({ role }) => {
+    const button = document.querySelector(`button[data-role="${role}"]`);
+    if (button) {
+        button.textContent = "Choose"; // Reset button text to the role name
+        button.disabled = false; // Re-enable the button for other users
     }
 });
 
@@ -44,4 +51,3 @@ socket.on('startGame', () => {
 socket.on('gameStarted', () => {
     window.location.href = `/game/${lobbyId}`;
 });
-

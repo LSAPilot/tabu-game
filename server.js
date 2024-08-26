@@ -129,6 +129,13 @@ function handleSelectRole(socket, lobbyId, playerName, team, role) {
     const roleTaken = lobby.players.some(p => p.role === roleName);
 
     if (!roleTaken) {
+        // Free the old role if the player has one
+        if (player.role) {
+            const oldRole = player.role;
+            io.to(lobbyId).emit('roleFreed', { role: oldRole });
+        }
+
+        // Assign the new role
         player.role = roleName;
         io.to(lobbyId).emit('roleSelected', { team, role, name: playerName });
         socket.emit('roleAssigned', { role: roleName });
