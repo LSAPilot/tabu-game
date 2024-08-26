@@ -8,6 +8,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    overflow: hidden;
 }
 h1 {
     color: #2C3E50;
@@ -20,7 +21,7 @@ h1 {
     margin-bottom: 20px;
 }
 .team {
-    background-color: #e3e9e9;
+    background-color: #ccdae4;
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 20px;
