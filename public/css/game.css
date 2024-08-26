@@ -81,7 +81,7 @@ h1 {
     padding: 10px 20px;
     font-size: 1em;
     color: white;
-    background-color: #58D68D;
+    background-color: #218838;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -90,7 +90,7 @@ h1 {
 }
 
 #startTimerButton:hover {
-    background-color: #218838;
+    background-color: #1b6e2d;
 }
 
 #startTimerButton:active {
@@ -150,7 +150,7 @@ button {
 }
 
 #confirmButton {
-    background-color: #58D68D;
+    background-color: #46ac70;
 }
 
 #confirmButton:hover {

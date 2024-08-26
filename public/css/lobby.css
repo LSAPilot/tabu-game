@@ -52,7 +52,7 @@ h1 {
     background-color: #c55147;
 }
 #startGameButton {
-    background-color: #58D68D;
+    background-color: #218838;
     color: #fff;
     border: none;
     padding: 12px 20px;
@@ -63,7 +63,7 @@ h1 {
 }
 
 #startGameButton:hover {
-    background-color: #218838;
+    background-color: #1b6e2d;
 }
 
 #copyLinkButton {
