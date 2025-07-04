@@ -1,22 +1,31 @@
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(180deg, #ccdae4 0%, #5DADE2 100%);
+    background: url('../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     margin: 0;
     padding: 20px;
+    background-color: rgba(255, 255, 255, 0.6); /* translucent overlay */
+    backdrop-filter: blur(1.5px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 98vh;
     overflow: hidden;
+    color: #2C3E50; /* Ink Text */
 }
+
 h1 {
-    color: #2C3E50;
+    color: #2C3E50; /* Ink Text */
     margin-bottom: 20px;
 }
+
 .name-form {
-    background-color: #ccdae4;
-    border: 1px solid #ccc;
+    background-color: #ffffff;         /* White card background */
+    border: 1px solid #FFC93C;         /* Golden Pop border */
     border-radius: 8px;
     padding: 20px;
     width: 300px;
@@ -25,23 +34,29 @@ h1 {
     flex-direction: column;
     align-items: center;
 }
+
 .name-form input {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #AEEDE3;         /* Seafoam accent */
     border-radius: 4px;
     font-size: 1em;
+    background-color: #f6fefd;
+    color: #2C3E50;
 }
+
 .name-form button {
-    background-color: #FF6F61;
-    color: #fff;
+    background-color: #FFC93C;         /* Golden Pop */
+    color: #2C3E50;                    /* Ink Text */
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 1em;
+    transition: background-color 0.3s;
 }
+
 .name-form button:hover {
-    background-color: #c55147;
+    background-color: #FFD34D;         /* Lighter golden pop */
 }

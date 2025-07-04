@@ -8,12 +8,25 @@ const playerName = localStorage.getItem('playerName');
 socket.emit('joinLobby', { lobbyId, playerName });
 
 socket.on('updateLobby', (lobby) => {
+    document.querySelectorAll('button[data-role]').forEach(btn => {
+        btn.textContent = 'Choose';
+        btn.disabled = false;
+    });
+
+    const unassignedList = document.getElementById('unassignedPlayers');
+    unassignedList.innerHTML = '';
+
     lobby.players.forEach(player => {
-        if (player.role) {
+        if (player.role === 'Unassigned') {
+            // Add to unassigned list
+            const li = document.createElement('li');
+            li.textContent = player.name;
+            unassignedList.appendChild(li);
+        } else if (player.role && player.role.startsWith('Team')) {
             const button = document.querySelector(`button[data-role="${player.role}"]`);
             if (button) {
-                button.textContent = player.name; // Display player's name in the button
-                button.disabled = true; // Disable the button for other users
+                button.textContent = player.name;
+                button.disabled = true;
             }
         }
     });
@@ -30,21 +43,20 @@ function selectRole(team, role) {
 socket.on('roleSelected', ({ team, role, name }) => {
     const button = document.querySelector(`button[data-role="${team} ${role}"]`);
     if (button) {
-        button.textContent = name; // Display player's name in the button
-        button.disabled = true; // Disable the button for other users
+        button.textContent = name; 
+        button.disabled = true; 
     }
 });
 
 socket.on('roleFreed', ({ role }) => {
     const button = document.querySelector(`button[data-role="${role}"]`);
     if (button) {
-        button.textContent = "Choose"; // Reset button text to the role name
-        button.disabled = false; // Re-enable the button for other users
+        button.textContent = "Choose"; 
+        button.disabled = false; 
     }
 });
 
 socket.on('startGame', () => {
-    // Redirect to the game page or start the game logic here
     alert('Game started!');
 });
 

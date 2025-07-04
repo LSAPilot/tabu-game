@@ -1,40 +1,50 @@
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(180deg, #ccdae4 0%, #5DADE2 100%);
+    background: url('../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     margin: 0;
     padding: 0;
+    background-color: rgba(255, 255, 255, 0.6); /* translucent overlay */
+    backdrop-filter: blur(2px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
     text-align: center;
+    color: #2C3E50; /* Ink Text */
 }
 
+/* Headings */
 h1 {
-    color: #2C3E50;
+    color: #2C3E50; /* Ink Text */
     font-size: 3em;
     margin-bottom: 20px;
 }
 
+/* Button-like links */
 a {
     display: inline-block;
     padding: 15px 30px;
     margin-top: 20px;
     font-size: 1.5em;
     text-decoration: none;
-    color: #fff;
-    background-color: #FF6F61;
+    color: #2C3E50;                  /* Ink Text for contrast */
+    background-color: #FFC93C;       /* Golden Pop */
     border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, transform 0.3s;
 }
 
 a:hover {
-    background-color: #FF6F61;
+    background-color: #FFD34D;       /* Slightly lighter golden pop */
     transform: translateY(-3px);
 }
 
 a:active {
-    background-color: #a5463d;
+    background-color: #e6b42d;       /* Pressed state */
     transform: translateY(1px);
 }
