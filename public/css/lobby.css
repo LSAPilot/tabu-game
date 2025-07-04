@@ -1,16 +1,21 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(180deg, #ccdae4 0%, #5DADE2 100%);
+    background: url('../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     margin: 0;
     padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
+    color: #2C3E50; /* Ink Text */
 }
 
 .container {
-    background: #f7f9fa;
+    background: #ffffff;
     padding: 30px;
     border-radius: 16px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -37,8 +42,8 @@ h1 {
 }
 
 .team {
-    background-color: #e4eff4;
-    border: 2px solid #ccdfe5;
+    background-color: #eaf7f5; /* Seafoam */
+    border: 2px solid #77D9D2; /* Sky Teal */
     border-radius: 12px;
     padding: 20px;
     width: 45%;
@@ -48,7 +53,7 @@ h1 {
 
 .team h2 {
     margin-top: 0;
-    color: #34495e;
+    color: #2C3E50;
 }
 
 .role {
@@ -60,8 +65,8 @@ h1 {
 }
 
 .role button {
-    background-color: #FF6F61;
-    color: #fff;
+    background-color: #FFC93C; /* Golden Pop */
+    color: #2C3E50;
     border: none;
     padding: 6px 12px;
     border-radius: 8px;
@@ -70,12 +75,12 @@ h1 {
     transition: background-color 0.2s;
 }
 .role button:hover {
-    background-color: #c55147;
+    background-color: #FFD34D;
 }
 
 .unassigned {
-    background-color: #f4f6f8;
-    border: 2px dashed #b3cdd1;
+    background-color: #f0f7f5; /* Lighter seafoam */
+    border: 2px dashed #77D9D2;
     border-radius: 12px;
     padding: 10px 20px;
     width: 100%;
@@ -85,7 +90,7 @@ h1 {
 .unassigned h2 {
     margin: 0 0 8px;
     font-size: 1.2em;
-    color: #2c3e50;
+    color: #2C3E50;
 }
 
 #unassignedPlayers {
@@ -98,15 +103,15 @@ h1 {
 }
 
 #unassignedPlayers li {
-    background-color: #e0e6eb;
+    background-color: #C7F1EC;
     padding: 4px 10px;
     border-radius: 6px;
     font-size: 0.9em;
-    color: #34495e;
+    color: #2C3E50;
 }
 
 .unassigned-btn {
-    background-color: #888ea8;
+    background-color: #71a0a7; /* muted teal button */
     color: #fff;
     padding: 6px 12px;
     border: none;
@@ -115,7 +120,7 @@ h1 {
     font-size: 0.9em;
 }
 .unassigned-btn:hover {
-    background-color: #6e758e;
+    background-color: #5b868d;
 }
 
 .controls {
@@ -126,7 +131,7 @@ h1 {
 }
 
 #startGameButton {
-    background-color: #218838;
+    background-color: #218838; /* green CTA */
     color: #fff;
     border: none;
     padding: 12px 20px;
@@ -139,8 +144,8 @@ h1 {
 }
 
 #copyLinkButton {
-    background-color: #71a0a7;
-    color: #000;
+    background-color: #FFC93C; /* Golden Pop */
+    color: #2C3E50;
     border: none;
     padding: 12px 20px;
     border-radius: 6px;
@@ -148,5 +153,50 @@ h1 {
     font-size: 1em;
 }
 #copyLinkButton:hover {
-    background-color: rgb(160, 181, 184);
+    background-color: #FFD34D;
+}
+
+.info-box-wrapper {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.info-box {
+    position: relative;
+    background-color: #FFC93C;
+    color: #2C3E50;
+    font-weight: bold;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5em;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+}
+
+.info-box:hover {
+    background-color: #FFD34D;
+}
+
+.info-popup {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 260px;
+    background-color: #ffffff;
+    color: #2C3E50;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    font-size: 0.9em;
+    z-index: 100;
+}
+
+.info-box:hover .info-popup {
+    display: block;
 }
