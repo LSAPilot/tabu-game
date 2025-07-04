@@ -2,24 +2,38 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports = (io, lobbies) => {
-    function getRandomPhrase(callback) {
+    function getRandomPhrase(lobby, callback) {
         const phrasesPath = path.join(__dirname, '../public/phrases.json');
+    
         fs.readFile(phrasesPath, 'utf8', (err, data) => {
             if (err) {
                 console.error('Error reading phrases file:', err);
                 return callback(null);
             }
+    
             const phrases = JSON.parse(data).Begriffe;
-            const randomIndex = Math.floor(Math.random() * phrases.length);
+            if (!phrases || !Array.isArray(phrases)) return callback(null);
+    
+            lobby.usedPhraseIndices = lobby.usedPhraseIndices || [];
+            if (lobby.usedPhraseIndices.length >= phrases.length) {
+                lobby.usedPhraseIndices = [];
+            }
+    
+            const unusedIndices = phrases
+                .map((_, idx) => idx)
+                .filter(idx => !lobby.usedPhraseIndices.includes(idx));
+    
+            const randomIndex = unusedIndices[Math.floor(Math.random() * unusedIndices.length)];
+            lobby.usedPhraseIndices.push(randomIndex);
             callback(phrases[randomIndex]);
         });
     }
 
     function startNewRound(lobbyId) {
-        getRandomPhrase((phrase) => {
+        const lobby = lobbies[lobbyId];
+        if (!lobby) return;
+        getRandomPhrase(lobby, (phrase) => {
             if (!phrase) return;
-            const lobby = lobbies[lobbyId];
-            if (!lobby) return;
             const guesserRole = `Team ${lobby.activeTeam} Guesser`;
             lobby.currentPhrase = phrase;
             const activeTeam = lobby.activeTeam;
