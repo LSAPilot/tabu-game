@@ -3,42 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taboo Game Lobby</title>
+    <title>Who Said It Lobby</title>
     <link rel="stylesheet" href="/css/lobby.css">
 </head>
 <body>
-    <h1>Join the Game Lobby</h1>
-    <div class="team unassigned">
-        <h2>Spieler</h2>
-        <ul id="unassignedPlayers"></ul>
-        <button onclick="selectRole('Unassigned', 'None')">Switch to Unassigned</button>
-    </div>
-    <div class="teams">
-        <div class="team">
-            <h2>Team A</h2>
-            <div class="role">
-                <span>Speaker:</span>
-                <button data-role="Team A Speaker" onclick="selectRole('Team A', 'Speaker')">Choose</button>
+    <div class="container">
+        <h1>🎲 Who Said It Game Lobby</h1>
+
+        <div class="unassigned">
+            <h2>🧍 Spieler </h2>
+            <ul id="unassignedPlayers"></ul>
+            <button onclick="selectRole('Unassigned', 'None')" class="unassigned-btn">Switch to Unassigned</button>
+        </div>
+
+        <div class="teams">
+            <div class="team">
+                <h2>Team A</h2>
+                <div class="role">
+                    <span>🎤 Speaker:</span>
+                    <button data-role="Team A Speaker" onclick="selectRole('Team A', 'Speaker')">Choose</button>
+                </div>
+                <div class="role">
+                    <span>🧠 Guesser:</span>
+                    <button data-role="Team A Guesser" onclick="selectRole('Team A', 'Guesser')">Choose</button>
+                </div>
             </div>
-            <div class="role">
-                <span>Guesser:</span>
-                <button data-role="Team A Guesser" onclick="selectRole('Team A', 'Guesser')">Choose</button>
+
+            <div class="team">
+                <h2>Team B</h2>
+                <div class="role">
+                    <span>🎤 Speaker:</span>
+                    <button data-role="Team B Speaker" onclick="selectRole('Team B', 'Speaker')">Choose</button>
+                </div>
+                <div class="role">
+                    <span>🧠 Guesser:</span>
+                    <button data-role="Team B Guesser" onclick="selectRole('Team B', 'Guesser')">Choose</button>
+                </div>
             </div>
         </div>
-        <div class="team">
-            <h2>Team B</h2>
-            <div class="role">
-                <span>Speaker:</span>
-                <button data-role="Team B Speaker" onclick="selectRole('Team B', 'Speaker')">Choose</button>
-            </div>
-            <div class="role">
-                <span>Guesser:</span>
-                <button data-role="Team B Guesser" onclick="selectRole('Team B', 'Guesser')">Choose</button>
-            </div>
+
+        <div class="controls">
+            <button id="copyLinkButton">🔗 Copy Invite Link</button>
+            <button id="startGameButton">🚀 Start Game</button>
         </div>
     </div>
-    <button id="copyLinkButton">Copy Invite Link</button>
-    <button id="startGameButton">Start Game</button>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="/lobby.js"></script>

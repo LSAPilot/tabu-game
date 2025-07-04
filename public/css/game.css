@@ -1,184 +1,151 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(180deg, #ccdae4 0%, #5DADE2 100%);
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: flex-start;
     height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #f7f9fa;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     text-align: center;
+}
+
+header h1 {
+    font-size: 2.2em;
+    margin: 0;
     color: #2C3E50;
 }
 
-header {
-    width: 100%;
-    padding: 10px 0;
-    margin: 5px 0 10px 0;
+.win-message {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #1b4f72;
+    margin: 15px 0;
 }
 
-h1 {
-    margin: 0;
-    font-size: 2.5em;
-}
-
-.game-container {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    flex-direction: column;
-}
-
-.card {
-    background-color: #ccdae4;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    width: 320px;
-    text-align: center;
-    margin-top: 10px;
-}
-
+/* Scoreboard Styling */
 .scoreboard {
     display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
+    justify-content: space-between;
+    background-color: #e4eff4;
+    border: 2px solid #ccdfe5;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
 }
 
 .team-score {
-    font-size: 1.2em;
+    flex: 1;
     text-align: center;
-    color: #9b9b9b;
-}
-
-.team-score h2 {
-    font-size: 1.5em;
-    margin-bottom: 5px;
-}
-
-.teamRounds {
-    font-size: 2em;
-    font-weight: bold;
-    margin: 0;
-    border: 2px solid grey;
-}
-
-.teamScores {
-    font-size: 1.5em;
-    margin: 0;
-    border: 2px solid grey;
-}
-
-.timer {
-    font-size: 2em;
-    margin-bottom: 20px;
-}
-
-#startTimerButton {
-    padding: 10px 20px;
-    font-size: 1em;
-    color: white;
-    background-color: #218838;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-bottom: 20px;
-}
-
-#startTimerButton:hover {
-    background-color: #1b6e2d;
-}
-
-#startTimerButton:active {
-    background-color: #58D68D;
-}
-
-.word-to-guess {
-    margin-bottom: 20px;
-}
-
-.word-to-guess h2 {
-    font-size: 1em;
-    margin-bottom: 10px;
-}
-
-#word {
-    font-size: 1.5em;
-    font-weight: bold;
     color: #2C3E50;
 }
 
-.forbidden-words {
-    margin-bottom: 20px;
+.team-score h2 {
+    margin: 0;
+    font-size: 1.3em;
 }
 
+.teamRounds,
+.teamScores {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+/* Main Card */
+.game-card {
+    background-color: #ccdae4;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.word-to-guess h2,
 .forbidden-words h3 {
-    font-size: 1.2em;
     margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+#word {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin: 10px 0 20px;
 }
 
 .forbidden-words ul {
     list-style: none;
     padding: 0;
+    margin-bottom: 20px;
 }
 
 .forbidden-words li {
     background-color: #f8d7da;
     color: #721c24;
-    padding: 5px;
-    margin-bottom: 5px;
-    border-radius: 4px;
+    padding: 6px 10px;
+    margin: 5px;
+    border-radius: 6px;
+    display: inline-block;
 }
 
-.buttons {
-    display: flex;
-    justify-content: space-around;
+.timer {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #2C3E50;
 }
 
-button {
-    padding: 10px 20px;
-    font-size: 1em;
+#startTimerButton {
+    background-color: #218838;
     color: white;
     border: none;
-    border-radius: 4px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 1em;
+}
+#startTimerButton:hover {
+    background-color: #1b6e2d;
+}
+
+/* Game Buttons */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
 #confirmButton {
-    background-color: #46ac70;
+    background-color: #28a745;
 }
-
 #confirmButton:hover {
     background-color: #218838;
 }
 
-
 #buzzButton {
     background-color: #FF6F61;
 }
-
 #buzzButton:hover {
     background-color: #c55147;
-}
-
-
-button:active {
-    background-color: #003f7f;
-}
-
-.active-team {
-    color: #2C3E50 !important; /* Highlight active team in blue */
-}
-
-.active-button {
-    background-color: #28a745; /* Green for active button */
-    color: white;
-    cursor: pointer;
 }
 
 .inactive-button {
@@ -187,47 +154,51 @@ button:active {
     cursor: not-allowed;
 }
 
-#green-overlay {
+/* Overlays */
+#green-overlay,
+#red-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 255, 0, 0.5);
     pointer-events: none;
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
     z-index: 9999;
+    transition: opacity 0.4s ease-in-out;
 }
+#green-overlay { background-color: rgba(0, 255, 0, 0.5); }
+#red-overlay { background-color: rgba(255, 0, 0, 0.5); }
+#green-overlay.show,
+#red-overlay.show { opacity: 1; }
 
-#green-overlay {
-    background-color: rgba(0, 255, 0, 0.5);
-}
-
-#red-overlay {
-    background-color: rgba(255, 0, 0, 0.5);
-}
-
-#green-overlay.show {
-    opacity: 1;
-}
-
-/* Screen shake effect */
+/* Shake animation */
 @keyframes shake {
-    0% { transform: translate(1px, 1px) rotate(0deg); }
-    10% { transform: translate(-1px, -2px) rotate(-1deg); }
-    20% { transform: translate(-3px, 0px) rotate(1deg); }
-    30% { transform: translate(3px, 2px) rotate(0deg); }
-    40% { transform: translate(1px, -1px) rotate(1deg); }
-    50% { transform: translate(-1px, 2px) rotate(-1deg); }
-    60% { transform: translate(-3px, 1px) rotate(0deg); }
-    70% { transform: translate(3px, 1px) rotate(-1deg); }
-    80% { transform: translate(-1px, -1px) rotate(1deg); }
-    90% { transform: translate(1px, 2px) rotate(0deg); }
-    100% { transform: translate(1px, -2px) rotate(-1deg); }
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
 }
-
 .shake {
     animation: shake 0.5s;
-    animation-iteration-count: 1;
+}
+
+.current-turn-info {
+    background-color: #e4eff4;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border-left: 6px solid #218838;
+    text-align: left;
+    color: #2C3E50;
+}
+
+.current-turn-info h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.2em;
+}
+
+.current-turn-info p {
+    margin: 4px 0;
+    font-size: 1em;
 }
