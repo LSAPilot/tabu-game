@@ -4,12 +4,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Who Said It?</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="stylesheet" href="/css/game.css">
     </head>
     <body>
         <div class="container">
             <header>
-                <h1>🎯 Who Said It?</h1>
+                <h1></i> Who Said It?</h1>
             </header>
 
             <h2 id="whoWon" class="win-message"></h2>
@@ -32,9 +33,9 @@
             <div class="game-card">
 
                 <div class="current-turn-info">
-                    <h3 id="activeTeamLabel">🔄 Team A's Turn</h3>
-                    <p><strong>🎤 Speaker:</strong> <span id="currentSpeaker">---</span></p>
-                    <p><strong>🧠 Guesser:</strong> <span id="currentGuesser">---</span></p>
+                    <h3 id="activeTeamLabel"><i class="fa-solid fa-arrows-rotate"></i> Team A's Turn</h3>
+                    <p><strong><i class="fa-solid fa-microphone"></i> Speaker:</strong> <span id="currentSpeaker">---</span></p>
+                    <p><strong><i class="fa-solid fa-brain"></i> Guesser:</strong> <span id="currentGuesser">---</span></p>
                 </div>
 
                 <div class="word-to-guess">
@@ -48,14 +49,14 @@
                 </div>
 
                 <div class="timer">
-                    ⏱️ <span id="timer">60</span>
+                    <i class="fa-solid fa-stopwatch"></i> <span id="timer">60</span>
                 </div>
 
                 <button id="startTimerButton">Start Timer</button>
 
                 <div class="buttons">
-                    <button id="confirmButton">✅ Confirm</button>
-                    <button id="buzzButton">❌ Buzz</button>
+                    <button id="confirmButton"><i class="fa-solid fa-check"></i> Confirm</button>
+                    <button id="buzzButton"><i class="fa-solid fa-xmark"></i> Buzz</button>
                 </div>
             </div>
         </div>

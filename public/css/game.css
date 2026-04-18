@@ -1,5 +1,5 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background: url('../images/background.jpg');
     background-size: cover;
     background-position: center;
@@ -14,6 +14,8 @@ body {
     color: #2C3E50; /* Ink text */
 }
 
+i { margin-right: 6px; }
+
 .container {
     width: 100%;
     max-width: 800px;
@@ -21,7 +23,7 @@ body {
     margin-top: 20px;
     background-color: #ffffff;
     border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.05); /* Softer shadow */
     text-align: center;
 }
 
@@ -120,9 +122,14 @@ header h1 {
     margin-bottom: 20px;
     cursor: pointer;
     font-size: 1em;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s;
 }
 #startTimerButton:hover {
     background-color: #1b6e2d;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
 /* Game Buttons */
@@ -137,9 +144,16 @@ header h1 {
     border: none;
     border-radius: 6px;
     font-size: 1em;
+    font-weight: 600;
     color: white;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s;
+}
+
+.buttons button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
 #confirmButton {
@@ -159,9 +173,11 @@ header h1 {
 }
 
 .inactive-button {
-    background-color: #ccc !important;
-    color: white !important;
+    background-color: #e0e0e0 !important;
+    color: #888 !important;
     cursor: not-allowed;
+    box-shadow: none !important;
+    transform: none !important;
 }
 
 /* Overlays */

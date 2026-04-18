@@ -1,5 +1,5 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background: url('../images/background.jpg');
     background-size: cover;
     background-position: center;
@@ -25,6 +25,8 @@ h1 {
     margin-bottom: 20px;
 }
 
+i { margin-right: 8px; }
+
 /* Button-like links */
 a {
     display: inline-block;
@@ -35,16 +37,18 @@ a {
     color: #2C3E50;                  /* Ink Text for contrast */
     background-color: #FFC93C;       /* Golden Pop */
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,0.05);
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
 a:hover {
     background-color: #FFD34D;       /* Slightly lighter golden pop */
     transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12), 0 6px 12px rgba(0,0,0,0.08);
 }
 
 a:active {
     background-color: #e6b42d;       /* Pressed state */
     transform: translateY(1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }

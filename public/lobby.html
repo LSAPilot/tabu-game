@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Who Said It Lobby</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/css/lobby.css">
 </head>
 <body>
     <div class="container">
-        <h1>🎲 Who Said It Game Lobby</h1>
+        <h1><i class="fa-solid fa-dice"></i> Who Said It Game Lobby</h1>
 
         <div class="info-box-wrapper">
-            <div class="info-box">❓
+            <div class="info-box"><i class="fa-solid fa-circle-question"></i>
                 <div class="info-popup">
                     <h3>Game Rules</h3>
                     <p><strong>Speaker:</strong> Describes the word without using forbidden words.</p>
@@ -23,7 +24,7 @@
         </div>
 
         <div class="unassigned">
-            <h2>🧍 Spieler </h2>
+            <h2><i class="fa-solid fa-users"></i> Spieler </h2>
             <ul id="unassignedPlayers"></ul>
             <button onclick="selectRole('Unassigned', 'None')" class="unassigned-btn">Switch to Unassigned</button>
         </div>
@@ -32,11 +33,11 @@
             <div class="team">
                 <h2>Team A</h2>
                 <div class="role">
-                    <span>🎤 Speaker:</span>
+                    <span><i class="fa-solid fa-microphone"></i> Speaker:</span>
                     <button data-role="Team A Speaker" onclick="selectRole('Team A', 'Speaker')">Choose</button>
                 </div>
                 <div class="role">
-                    <span>🧠 Guesser:</span>
+                    <span><i class="fa-solid fa-brain"></i> Guesser:</span>
                     <button data-role="Team A Guesser" onclick="selectRole('Team A', 'Guesser')">Choose</button>
                 </div>
             </div>
@@ -44,19 +45,19 @@
             <div class="team">
                 <h2>Team B</h2>
                 <div class="role">
-                    <span>🎤 Speaker:</span>
+                    <span><i class="fa-solid fa-microphone"></i> Speaker:</span>
                     <button data-role="Team B Speaker" onclick="selectRole('Team B', 'Speaker')">Choose</button>
                 </div>
                 <div class="role">
-                    <span>🧠 Guesser:</span>
+                    <span><i class="fa-solid fa-brain"></i> Guesser:</span>
                     <button data-role="Team B Guesser" onclick="selectRole('Team B', 'Guesser')">Choose</button>
                 </div>
             </div>
         </div>
 
         <div class="controls">
-            <button id="copyLinkButton">🔗 Copy Invite Link</button>
-            <button id="startGameButton">🚀 Start Game</button>
+            <button id="copyLinkButton"><i class="fa-solid fa-link"></i> Copy Invite Link</button>
+            <button id="startGameButton"><i class="fa-solid fa-rocket"></i> Start Game</button>
         </div>
     </div>
 
