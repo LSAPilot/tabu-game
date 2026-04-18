@@ -98,7 +98,7 @@ export function handleNewRound(data) {
         forbiddenList.appendChild(listItem);
         console.log('Added forbidden word:', word);
     });
-    document.getElementById('activeTeamLabel').textContent = `🔄 Team ${activeTeam}'s Turn`;
+    document.getElementById('activeTeamLabel').textContent = `Team ${activeTeam}'s Turn`;
     document.getElementById('currentSpeaker').textContent = speaker || '---';
     document.getElementById('currentGuesser').textContent = guesser || '---';
 }
@@ -107,11 +107,9 @@ export function updateScoreUi(data) {
     console.log("received new scores from server:", data);
     const { teamAScore, teamBScore } = data;
 
-    // Find the elements in the DOM
     const teamAScoreElement = document.getElementById("teamAScore");
     const teamBScoreElement = document.getElementById("teamBScore");
 
-    // Update the elements with the new scores
     teamAScoreElement.textContent = teamAScore;
     teamBScoreElement.textContent = teamBScore;
 }
@@ -120,11 +118,9 @@ export function updateRoundsUi(data) {
     console.log("received new rounds from server:", data);
     const { teamARounds, teamBRounds } = data;
 
-    // Find the elements in the DOM
     const teamARoundElement = document.getElementById("teamARounds");
     const teamBRoundElement = document.getElementById("teamBRounds");
 
-    // Update the elements with the new scores
     teamARoundElement.textContent = teamARounds;
     teamBRoundElement.textContent = teamBRounds;
 }
@@ -133,9 +129,7 @@ export function updateWinner(data) {
     console.log("received new winner from server:", data);
     const { winner, message } = data;
 
-    // Find the elements in the DOM
     const winningHeader = document.getElementById("whoWon");
 
-    // Update the elements with the new scores
     winningHeader.textContent = message;
 }
